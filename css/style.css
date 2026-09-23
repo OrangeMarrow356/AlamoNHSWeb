@@ -1089,3 +1089,197 @@ a {
   }
 
 }
+/* =========================================
+   SERVICE HOURS
+   ========================================= */
+
+.hours-section {
+  margin-top: 50px;
+}
+
+.section-heading {
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  color: var(--white);
+}
+
+.loading-text,
+.empty-hours {
+  color: #999;
+  padding: 25px;
+  background: #131313;
+  border: 1px solid #303030;
+  border-radius: 12px;
+}
+
+.empty-hours h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.empty-hours p {
+  color: #999;
+}
+
+
+/* Total hours */
+
+.hours-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: linear-gradient(
+    110deg,
+    #151515,
+    #211d10
+  );
+
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+
+  padding: 20px 24px;
+  margin-bottom: 15px;
+}
+
+.hours-total span {
+  color: #aaa;
+}
+
+.hours-total strong {
+  color: var(--gold);
+  font-size: 24px;
+}
+
+
+/* Individual service entry */
+
+.hours-card {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  background: #131313;
+
+  border: 1px solid #303030;
+  border-radius: 12px;
+
+  padding: 22px;
+  margin-bottom: 12px;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.hours-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+
+.hours-card-main h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.hours-card-main p {
+  color: #aaa;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.hours-card-main small {
+  color: #777;
+}
+
+
+/* Hours number */
+
+.hours-card-side {
+  min-width: 100px;
+  text-align: right;
+}
+
+.hours-card-side strong {
+  display: block;
+
+  color: var(--white);
+
+  font-size: 28px;
+}
+
+.hours-card-side span {
+  display: block;
+
+  color: #777;
+
+  font-size: 12px;
+
+  margin-bottom: 10px;
+}
+
+
+/* Status */
+
+.hours-card-side em {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-style: normal;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+
+.status-pending {
+  color: #f5c542;
+  border: 1px solid #f5c542;
+}
+
+
+.status-approved {
+  color: #65d48b;
+  border: 1px solid #65d48b;
+}
+
+
+.status-rejected {
+  color: #ff7777;
+  border: 1px solid #ff7777;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .hours-card {
+    flex-direction: column;
+  }
+
+  .hours-card-side {
+    text-align: left;
+  }
+
+  .hours-total {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+}
