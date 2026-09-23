@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Service Hours | AHS NHS</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+  <div class="nav-container">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-shield">
+        NHS
+      </div>
+
+      <div class="brand-text">
+        <strong>ALAMOGORDO HIGH SCHOOL</strong>
+        <span>National Honor Society</span>
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      onclick="toggleMenu()">
+      ☰
+    </button>
+
+
+    <nav id="mainNav">
+
+      <a href="index.html">Home</a>
+
+      <a href="events.html">Events</a>
+
+      <a href="service.html">Service</a>
+
+      <a href="resources.html">Resources</a>
+
+      <a href="member.html">Dashboard</a>
+
+      <a href="#"
+         onclick="logout(); return false;">
+        Log Out
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="page-hero">
+
+  <div class="page-hero-inner">
+
+    <p class="eyebrow">
+      MEMBER AREA
+    </p>
+
+    <h1>
+      Service <span>Hours</span>
+    </h1>
+
+    <p>
+      Submit and track your NHS community service hours.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="content-section">
+
+
+  <!-- SERVICE HOUR FORM -->
+
+  <div class="form-card">
+
+    <h2>Submit Service Hours</h2>
+
+    <p class="form-note">
+      Enter the details of a service activity you completed.
+      Your submission will be reviewed by NHS leadership.
+    </p>
+
+
+    <form id="hoursForm">
+
+
+      <div class="form-group">
+
+        <label for="eventName">
+          Service Activity
+        </label>
+
+        <input
+          type="text"
+          id="eventName"
+          placeholder="Example: Food Bank Volunteer"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="serviceDate">
+          Date
+        </label>
+
+        <input
+          type="date"
+          id="serviceDate"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="hours">
+          Hours
+        </label>
+
+        <input
+          type="number"
+          id="hours"
+          min="0.25"
+          max="24"
+          step="0.25"
+          placeholder="Example: 2.5"
+          required>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="description">
+          Description
+        </label>
+
+        <textarea
+          id="description"
+          placeholder="Describe what you did during the service activity."></textarea>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="gold-button"
+        id="submitButton">
+
+        Submit Hours
+
+      </button>
+
+
+      <p
+        id="formMessage"
+        class="login-message">
+      </p>
+
+    </form>
+
+  </div>
+
+
+  <!-- SUBMITTED HOURS -->
+
+  <div class="hours-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        MY RECORD
+      </p>
+
+      <h2>
+        Submitted Hours
+      </h2>
+
+    </div>
+
+
+    <div id="hoursList">
+
+      <p class="loading-text">
+        Loading your service hours...
+      </p>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <div>
+
+      <strong>
+        Alamogordo High School
+      </strong>
+
+      <p>
+        National Honor Society
+      </p>
+
+    </div>
+
+
+    <p>
+      © 2026 Alamogordo High School NHS
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   SUPABASE CONNECTION
+   ========================================= */
+
+const SUPABASE_URL =
+  "https://biysmsrusfnjjadtvhxj.supabase.co";
+
+
+const SUPABASE_KEY =
+  "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+let currentUser = null;
+
+
+/* =========================================
+   CHECK LOGIN
+   ========================================= */
+
+async function loadUser() {
+
+  const {
+    data
+  } = await supabaseClient.auth.getSession();
+
+
+  if (!data.session) {
+
+    window.location.href =
+      "login.html";
+
+    return false;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  return true;
+
+}
+
+
+/* =========================================
+   SUBMIT SERVICE HOURS
+   ========================================= */
+
+document
+  .getElementById("hoursForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const eventName =
+        document
+          .getElementById("eventName")
+          .value
+          .trim();
+
+
+      const serviceDate =
+        document
+          .getElementById("serviceDate")
+          .value;
+
+
+      const hours =
+        Number(
+          document
+            .getElementById("hours")
+            .value
+        );
+
+
+      const description =
+        document
+          .getElementById("description")
+          .value
+          .trim();
+
+
+      const button =
+        document.getElementById(
+          "submitButton"
+        );
+
+
+      const message =
+        document.getElementById(
+          "formMessage"
+        );
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Submitting...";
+
+      message.textContent = "";
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("service_hours")
+          .insert({
+
+            member_id:
+              currentUser.id,
+
+            event_name:
+              eventName,
+
+            service_date:
+              serviceDate,
+
+            hours:
+              hours,
+
+            description:
+              description
+
+          });
+
+
+      if (error) {
+
+        console.error(error);
+
+        message.textContent =
+          "Error submitting hours: " +
+          error.message;
+
+        button.disabled = false;
+
+        button.textContent =
+          "Submit Hours";
+
+        return;
+
+      }
+
+
+      message.textContent =
+        "Your service hours were submitted successfully!";
+
+
+      document
+        .getElementById("hoursForm")
+        .reset();
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Submit Hours";
+
+
+      loadHours();
+
+    }
+  );
+
+
+/* =========================================
+   LOAD SERVICE HOURS
+   ========================================= */
+
+async function loadHours() {
+
+  const list =
+    document.getElementById(
+      "hoursList"
+    );
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+
+      .from("service_hours")
+
+      .select("*")
+
+      .eq(
+        "member_id",
+        currentUser.id
+      )
+
+      .order(
+        "service_date",
+        {
+          ascending: false
+        }
+      );
+
+
+  if (error) {
+
+    console.error(error);
+
+    list.innerHTML =
+      "<p>Unable to load service hours.</p>";
+
+    return;
+
+  }
+
+
+  if (!data || data.length === 0) {
+
+    list.innerHTML = `
+
+      <div class="empty-hours">
+
+        <h3>
+          No service hours yet
+        </h3>
+
+        <p>
+          Submit your first service activity
+          using the form above.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML = "";
+
+
+  let totalHours = 0;
+
+
+  data.forEach(function(item) {
+
+    totalHours +=
+      Number(item.hours);
+
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "hours-card";
+
+
+    card.innerHTML = `
+
+      <div class="hours-card-main">
+
+        <h3>
+          ${escapeHtml(item.event_name)}
+        </h3>
+
+        <p>
+          ${escapeHtml(
+            item.description ||
+            "No description provided."
+          )}
+        </p>
+
+        <small>
+          ${item.service_date}
+        </small>
+
+      </div>
+
+
+      <div class="hours-card-side">
+
+        <strong>
+          ${item.hours}
+        </strong>
+
+        <span>
+          hours
+        </span>
+
+        <em class="status-${item.status}">
+          ${item.status}
+        </em>
+
+      </div>
+
+    `;
+
+
+    list.appendChild(card);
+
+  });
+
+
+  const total =
+    document.createElement("div");
+
+
+  total.className =
+    "hours-total";
+
+
+  total.innerHTML = `
+
+    <span>
+      Total Submitted
+    </span>
+
+    <strong>
+      ${totalHours.toFixed(2)} hours
+    </strong>
+
+  `;
+
+
+  list.prepend(total);
+
+}
+
+
+/* =========================================
+   SECURITY
+   ========================================= */
+
+function escapeHtml(text) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    text;
+
+  return div.innerHTML;
+
+}
+
+
+/* =========================================
+   LOG OUT
+   ========================================= */
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+
+function toggleMenu() {
+
+  document
+    .getElementById("mainNav")
+    .classList.toggle("open");
+
+}
+
+
+/* =========================================
+   START
+   ========================================= */
+
+async function start() {
+
+  const loggedIn =
+    await loadUser();
+
+
+  if (!loggedIn) {
+    return;
+  }
+
+
+  await loadHours();
+
+}
+
+
+start();
+
+</script>
+
+</body>
+
+</html>
