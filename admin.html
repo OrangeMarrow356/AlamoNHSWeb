@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | AHS NHS</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="nav-container">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-shield">
+        NHS
+      </div>
+
+      <div class="brand-text">
+
+        <strong>
+          ALAMOGORDO HIGH SCHOOL
+        </strong>
+
+        <span>
+          National Honor Society
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      onclick="toggleMenu()">
+
+      ☰
+
+    </button>
+
+
+    <nav id="mainNav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="member.html">
+        Dashboard
+      </a>
+
+      <a href="#"
+         onclick="logout(); return false;">
+
+        Log Out
+
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<section class="page-hero">
+
+  <div class="page-hero-inner">
+
+    <p class="eyebrow">
+      NHS ADMINISTRATION
+    </p>
+
+    <h1>
+      Admin <span>Dashboard</span>
+    </h1>
+
+    <p>
+      Review and manage NHS member service-hour submissions.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section class="content-section">
+
+
+  <!-- ACCESS DENIED -->
+
+  <div
+    id="accessDenied"
+    class="form-card"
+    style="display:none;">
+
+    <h2>
+      Access Denied
+    </h2>
+
+    <p>
+      You must be an NHS administrator or advisor
+      to access this page.
+    </p>
+
+    <br>
+
+    <a
+      href="member.html"
+      class="gold-button">
+
+      Return to Dashboard
+
+    </a>
+
+  </div>
+
+
+
+  <!-- ADMIN CONTENT -->
+
+  <div id="adminContent"
+       style="display:none;">
+
+
+    <!-- SUMMARY -->
+
+    <div class="admin-stats">
+
+
+      <div class="admin-stat">
+
+        <span>
+          Pending
+        </span>
+
+        <strong id="pendingCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="admin-stat">
+
+        <span>
+          Approved
+        </span>
+
+        <strong id="approvedCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="admin-stat">
+
+        <span>
+          Rejected
+        </span>
+
+        <strong id="rejectedCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="admin-stat">
+
+        <span>
+          Total Hours
+        </span>
+
+        <strong id="totalHours">
+          0
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- FILTER -->
+
+    <div class="admin-toolbar">
+
+      <div>
+
+        <p class="eyebrow">
+          SERVICE HOURS
+        </p>
+
+        <h2>
+          Submissions
+        </h2>
+
+      </div>
+
+
+      <select
+        id="statusFilter"
+        onchange="loadSubmissions()">
+
+        <option value="all">
+          All Submissions
+        </option>
+
+        <option value="pending">
+          Pending
+        </option>
+
+        <option value="approved">
+          Approved
+        </option>
+
+        <option value="rejected">
+          Rejected
+        </option>
+
+      </select>
+
+    </div>
+
+
+
+    <div
+      id="adminMessage"
+      class="admin-message">
+    </div>
+
+
+
+    <!-- SUBMISSIONS -->
+
+    <div
+      id="submissions">
+
+      <p class="loading-text">
+        Loading submissions...
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <div>
+
+      <strong>
+        Alamogordo High School
+      </strong>
+
+      <p>
+        National Honor Society
+      </p>
+
+    </div>
+
+
+    <p>
+      © 2026 Alamogordo High School NHS
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================
+   SUPABASE
+   ========================================= */
+
+const SUPABASE_URL =
+  "https://biysmsrusfnjjadtvhxj.supabase.co";
+
+
+const SUPABASE_KEY =
+  "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+let currentUser = null;
+
+
+
+/* =========================================
+   CHECK ADMIN ACCESS
+   ========================================= */
+
+async function checkAdmin() {
+
+  const {
+    data
+  } =
+    await supabaseClient.auth.getSession();
+
+
+  if (!data.session) {
+
+    window.location.href =
+      "login.html";
+
+    return;
+
+  }
+
+
+  currentUser =
+    data.session.user;
+
+
+  const {
+    data: profile,
+    error
+  } =
+    await supabaseClient
+
+      .from("profiles")
+
+      .select("role")
+
+      .eq(
+        "id",
+        currentUser.id
+      )
+
+      .single();
+
+
+  if (
+    error ||
+    !profile ||
+    (
+      profile.role !== "admin" &&
+      profile.role !== "advisor"
+    )
+  ) {
+
+    document
+      .getElementById("accessDenied")
+      .style.display = "block";
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("adminContent")
+    .style.display = "block";
+
+
+  await loadSubmissions();
+
+}
+
+
+
+/* =========================================
+   LOAD SUBMISSIONS
+   ========================================= */
+
+async function loadSubmissions() {
+
+  const container =
+    document.getElementById(
+      "submissions"
+    );
+
+
+  container.innerHTML = `
+
+    <p class="loading-text">
+      Loading submissions...
+    </p>
+
+  `;
+
+
+  const filter =
+    document.getElementById(
+      "statusFilter"
+    ).value;
+
+
+  let query =
+    supabaseClient
+
+      .from("service_hours")
+
+      .select("*")
+
+      .order(
+        "service_date",
+        {
+          ascending: false
+        }
+      );
+
+
+  if (filter !== "all") {
+
+    query =
+      query.eq(
+        "status",
+        filter
+      );
+
+  }
+
+
+  const {
+    data,
+    error
+  } =
+    await query;
+
+
+  if (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+
+      <div class="empty-hours">
+
+        <h3>
+          Error loading submissions
+        </h3>
+
+        <p>
+          ${escapeHtml(error.message)}
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  updateStats(data);
+
+
+  if (!data || data.length === 0) {
+
+    container.innerHTML = `
+
+      <div class="empty-hours">
+
+        <h3>
+          No submissions found
+        </h3>
+
+        <p>
+          There are no service-hour submissions
+          matching this filter.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  data.forEach(function(item) {
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "admin-submission";
+
+
+    card.innerHTML = `
+
+      <div class="admin-submission-top">
+
+        <div>
+
+          <span class="admin-status status-${item.status}">
+            ${escapeHtml(item.status)}
+          </span>
+
+          <h3>
+            ${escapeHtml(item.event_name)}
+          </h3>
+
+        </div>
+
+
+        <div class="admin-hours">
+
+          <strong>
+            ${item.hours}
+          </strong>
+
+          <span>
+            hours
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="admin-details">
+
+        <p>
+          <strong>Date:</strong>
+          ${escapeHtml(item.service_date)}
+        </p>
+
+        <p>
+          <strong>Member ID:</strong>
+          ${escapeHtml(item.member_id)}
+        </p>
+
+        <p>
+          <strong>Description:</strong>
+          ${escapeHtml(
+            item.description ||
+            "No description provided."
+          )}
+        </p>
+
+      </div>
+
+
+      <div class="admin-review">
+
+        <label>
+          Review Note
+        </label>
+
+        <textarea
+          id="note-${item.id}"
+          placeholder="Optional note for the member...">${escapeHtml(
+            item.review_note || ""
+          )}</textarea>
+
+
+        <div class="admin-actions">
+
+          <button
+            class="approve-button"
+            onclick="reviewSubmission('${item.id}', 'approved')">
+
+            ✓ Approve
+
+          </button>
+
+
+          <button
+            class="reject-button"
+            onclick="reviewSubmission('${item.id}', 'rejected')">
+
+            ✕ Reject
+
+          </button>
+
+
+          <button
+            class="save-button"
+            onclick="saveNote('${item.id}')">
+
+            Save Note
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+
+/* =========================================
+   UPDATE SUMMARY
+   ========================================= */
+
+function updateStats(data) {
+
+  let pending = 0;
+
+  let approved = 0;
+
+  let rejected = 0;
+
+  let hours = 0;
+
+
+  data.forEach(function(item) {
+
+    hours += Number(item.hours);
+
+
+    if (item.status === "pending") {
+      pending++;
+    }
+
+    if (item.status === "approved") {
+      approved++;
+    }
+
+    if (item.status === "rejected") {
+      rejected++;
+    }
+
+  });
+
+
+  document
+    .getElementById("pendingCount")
+    .textContent = pending;
+
+
+  document
+    .getElementById("approvedCount")
+    .textContent = approved;
+
+
+  document
+    .getElementById("rejectedCount")
+    .textContent = rejected;
+
+
+  document
+    .getElementById("totalHours")
+    .textContent =
+      hours.toFixed(2);
+
+}
+
+
+
+/* =========================================
+   APPROVE / REJECT
+   ========================================= */
+
+async function reviewSubmission(
+  id,
+  status
+) {
+
+  const note =
+    document
+      .getElementById(
+        "note-" + id
+      )
+      .value
+      .trim();
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+
+      .from("service_hours")
+
+      .update({
+
+        status:
+          status,
+
+        review_note:
+          note,
+
+        reviewed_at:
+          new Date().toISOString()
+
+      })
+
+      .eq(
+        "id",
+        id
+      );
+
+
+  if (error) {
+
+    showMessage(
+      "Error: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    status === "approved"
+      ? "Service hours approved."
+      : "Service hours rejected."
+  );
+
+
+  await loadSubmissions();
+
+}
+
+
+
+/* =========================================
+   SAVE NOTE
+   ========================================= */
+
+async function saveNote(id) {
+
+  const note =
+    document
+      .getElementById(
+        "note-" + id
+      )
+      .value
+      .trim();
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+
+      .from("service_hours")
+
+      .update({
+
+        review_note:
+          note,
+
+        reviewed_at:
+          new Date().toISOString()
+
+      })
+
+      .eq(
+        "id",
+        id
+      );
+
+
+  if (error) {
+
+    showMessage(
+      "Error: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "Review note saved."
+  );
+
+}
+
+
+
+/* =========================================
+   MESSAGE
+   ========================================= */
+
+function showMessage(message) {
+
+  const box =
+    document.getElementById(
+      "adminMessage"
+    );
+
+
+  box.textContent =
+    message;
+
+
+  setTimeout(function() {
+
+    box.textContent = "";
+
+  }, 4000);
+
+}
+
+
+
+/* =========================================
+   HTML ESCAPING
+   ========================================= */
+
+function escapeHtml(text) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    text;
+
+  return div.innerHTML;
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+   ========================================= */
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+
+function toggleMenu() {
+
+  document
+    .getElementById("mainNav")
+    .classList.toggle("open");
+
+}
+
+
+
+/* =========================================
+   START
+   ========================================= */
+
+checkAdmin();
+
+</script>
+
+
+</body>
+
+</html>
