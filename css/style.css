@@ -959,3 +959,133 @@ a {
   color: #ff8a8a;
   font-size: 14px;
 }
+/* =========================================
+   MEMBER DASHBOARD - FULL STYLING
+   ========================================= */
+
+.dashboard-welcome {
+  background: linear-gradient(110deg, #151515, #211d10);
+  border: 1px solid var(--gold);
+  border-radius: 13px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.dashboard-welcome h2 {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.dashboard-welcome p {
+  color: #aaa;
+}
+
+
+/* Dashboard cards */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  background: #131313;
+  border: 1px solid #303030;
+  border-radius: 13px;
+  padding: 25px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.feature-card h2 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+
+/* Buttons */
+
+.feature-card .gold-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 11px 18px;
+  background: var(--gold);
+  color: #111;
+  border-radius: 8px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.feature-card .gold-button:hover {
+  background: var(--gold-bright);
+}
+
+
+/* Account information */
+
+.account-card {
+  margin-top: 25px;
+}
+
+.account-card h2 {
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.account-info {
+  display: grid;
+  gap: 0;
+}
+
+.account-info p {
+  color: #aaa;
+  padding: 14px 0;
+  border-bottom: 1px solid #303030;
+}
+
+.account-info p:last-child {
+  border-bottom: none;
+}
+
+.account-info strong {
+  color: var(--gold);
+  display: inline-block;
+  min-width: 65px;
+}
+
+
+/* Login errors/messages */
+
+.login-message {
+  margin-top: 15px;
+  color: #ff8a8a;
+  font-size: 14px;
+}
+
+
+/* Mobile dashboard */
+
+@media (max-width: 750px) {
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-welcome {
+    padding: 22px;
+  }
+
+}
