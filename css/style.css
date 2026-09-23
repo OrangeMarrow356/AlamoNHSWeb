@@ -904,3 +904,58 @@ a {
   }
 
 }
+/* =========================================
+   MEMBER DASHBOARD
+   ========================================= */
+
+.dashboard-welcome {
+  background: linear-gradient(110deg, #151515, #211d10);
+  border: 1px solid var(--gold);
+  border-radius: 13px;
+  padding: 28px;
+  margin-bottom: 25px;
+}
+
+.dashboard-welcome h2 {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.dashboard-welcome p {
+  color: #aaa;
+}
+
+.feature-card .gold-button {
+  display: inline-block;
+  margin-top: 18px;
+  text-decoration: none;
+}
+
+.account-card {
+  margin-top: 25px;
+}
+
+.account-info {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.account-info p {
+  color: #aaa;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #303030;
+}
+
+.account-info strong {
+  color: var(--gold);
+  margin-right: 8px;
+}
+
+.login-message {
+  margin-top: 15px;
+  color: #ff8a8a;
+  font-size: 14px;
+}
