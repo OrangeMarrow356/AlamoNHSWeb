@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Member Dashboard | AHS NHS</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+  <div class="nav-container">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-shield">
+        NHS
+      </div>
+
+      <div class="brand-text">
+        <strong>ALAMOGORDO HIGH SCHOOL</strong>
+        <span>National Honor Society</span>
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      onclick="toggleMenu()"
+    >
+      ☰
+    </button>
+
+
+    <nav id="mainNav">
+
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="service.html">Service</a>
+      <a href="resources.html">Resources</a>
+
+      <a href="member.html" class="active">
+        Dashboard
+      </a>
+
+      <a href="#" onclick="logout(); return false;">
+        Log Out
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="page-hero">
+
+  <div class="page-hero-inner">
+
+    <p class="eyebrow">
+      MEMBER AREA
+    </p>
+
+    <h1>
+      Member <span>Dashboard</span>
+    </h1>
+
+    <p id="welcomeText">
+      Loading your account...
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="content-section">
+
+
+  <!-- PROFILE -->
+
+  <div class="dashboard-welcome">
+
+    <h2 id="memberName">
+      Welcome!
+    </h2>
+
+    <p id="memberEmail">
+      Loading account information...
+    </p>
+
+  </div>
+
+
+  <!-- DASHBOARD CARDS -->
+
+  <div class="feature-grid">
+
+
+    <div class="feature-card">
+
+      <h2>🤝 Service Hours</h2>
+
+      <p>
+        Submit and track your NHS community service hours.
+      </p>
+
+      <a href="service.html" class="gold-button">
+        View Service
+      </a>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <h2>📅 Events</h2>
+
+      <p>
+        View upcoming NHS events and service opportunities.
+      </p>
+
+      <a href="events.html" class="gold-button">
+        View Events
+      </a>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <h2>📣 Announcements</h2>
+
+      <p>
+        See the latest information from NHS leadership.
+      </p>
+
+      <a href="announcements.html" class="gold-button">
+        View Announcements
+      </a>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <h2>📄 Resources</h2>
+
+      <p>
+        Access NHS documents, forms, and member resources.
+      </p>
+
+      <a href="resources.html" class="gold-button">
+        View Resources
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ACCOUNT INFORMATION -->
+
+  <div class="feature-card account-card">
+
+    <h2>Account Information</h2>
+
+    <div class="account-info">
+
+      <p>
+        <strong>Name:</strong>
+        <span id="accountName">Loading...</span>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <span id="accountEmail">Loading...</span>
+      </p>
+
+      <p>
+        <strong>Role:</strong>
+        <span id="accountRole">Loading...</span>
+      </p>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <div>
+
+      <strong>
+        Alamogordo High School
+      </strong>
+
+      <p>
+        National Honor Society
+      </p>
+
+    </div>
+
+
+    <p>
+      © 2026 Alamogordo High School NHS
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://biysmsrusfnjjadtvhxj.supabase.co";
+
+const SUPABASE_KEY =
+  "YOUR_PUBLISHABLE_KEY_HERE";
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+async function loadMember() {
+
+  const {
+    data: sessionData
+  } = await supabaseClient.auth.getSession();
+
+
+  const session =
+    sessionData.session;
+
+
+  // If the user isn't logged in,
+  // send them back to login.
+
+  if (!session) {
+
+    window.location.href =
+      "login.html";
+
+    return;
+
+  }
+
+
+  const user =
+    session.user;
+
+
+  // Get profile information
+
+  const {
+    data: profile,
+    error
+  } = await supabaseClient
+
+    .from("profiles")
+
+    .select("*")
+
+    .eq("id", user.id)
+
+    .single();
+
+
+  if (error) {
+
+    console.error(error);
+
+    document.getElementById(
+      "welcomeText"
+    ).textContent =
+      "Unable to load your profile.";
+
+    return;
+
+  }
+
+
+  const name =
+    profile.full_name || "NHS Member";
+
+
+  const email =
+    profile.school_email || user.email;
+
+
+  const role =
+    profile.role || "member";
+
+
+  document.getElementById(
+    "memberName"
+  ).textContent =
+    "Welcome, " + name + "!";
+
+
+  document.getElementById(
+    "welcomeText"
+  ).textContent =
+    "Welcome to your NHS member dashboard.";
+
+
+  document.getElementById(
+    "memberEmail"
+  ).textContent =
+    email;
+
+
+  document.getElementById(
+    "accountName"
+  ).textContent =
+    name;
+
+
+  document.getElementById(
+    "accountEmail"
+  ).textContent =
+    email;
+
+
+  document.getElementById(
+    "accountRole"
+  ).textContent =
+    role.charAt(0).toUpperCase() +
+    role.slice(1);
+
+
+  // Later we'll use this to show
+  // special admin/advisor controls.
+
+  if (
+    role === "admin" ||
+    role === "advisor"
+  ) {
+
+    console.log(
+      "Leadership account detected."
+    );
+
+  }
+
+}
+
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+function toggleMenu() {
+
+  document
+    .getElementById("mainNav")
+    .classList.toggle("open");
+
+}
+
+
+loadMember();
+
+</script>
+
+</body>
+</html>
