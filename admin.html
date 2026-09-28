@@ -2,111 +2,51 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Admin Dashboard | AHS NHS</title>
 
-  <link
-    rel="stylesheet"
-    href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-  </script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 
 <body>
 
-
-<!-- =========================================
-     HEADER
-     ========================================= -->
-
 <header class="site-header">
-
   <div class="nav-container">
 
-    <a
-      href="index.html"
-      class="brand">
-
-      <div class="brand-shield">
-        NHS
-      </div>
+    <a href="index.html" class="brand">
+      <div class="brand-shield">NHS</div>
 
       <div class="brand-text">
-
-        <strong>
-          ALAMOGORDO HIGH SCHOOL
-        </strong>
-
-        <span>
-          National Honor Society
-        </span>
-
+        <strong>ALAMOGORDO HIGH SCHOOL</strong>
+        <span>National Honor Society</span>
       </div>
-
     </a>
-
 
     <button
       class="menu-toggle"
       onclick="toggleMenu()"
-      aria-label="Open navigation menu">
-
+      aria-label="Open navigation">
       ☰
-
     </button>
 
-
     <nav id="mainNav">
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="events.html">
-        Events
-      </a>
-
-      <a href="service.html">
-        Service
-      </a>
-
-      <a href="resources.html">
-        Resources
-      </a>
-
-      <a href="member.html">
-        Dashboard
-      </a>
-
-      <a
-        href="#"
-        onclick="logout(); return false;">
-
-        Log Out
-
-      </a>
-
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="service.html">Service</a>
+      <a href="resources.html">Resources</a>
+      <a href="member.html">Dashboard</a>
+      <a href="#" onclick="logout(); return false;">Log Out</a>
     </nav>
 
   </div>
-
 </header>
 
 
-
-<!-- =========================================
-     PAGE HERO
-     ========================================= -->
+<!-- PAGE HERO -->
 
 <section class="page-hero">
 
@@ -129,17 +69,9 @@
 </section>
 
 
-
-<!-- =========================================
-     MAIN CONTENT
-     ========================================= -->
-
 <section class="content-section">
 
-
-  <!-- =======================================
-       ACCESS DENIED
-       ======================================= -->
+  <!-- ACCESS DENIED -->
 
   <div
     id="accessDenied"
@@ -168,82 +100,41 @@
   </div>
 
 
-
-  <!-- =======================================
-       ADMIN CONTENT
-       ======================================= -->
+  <!-- ADMIN CONTENT -->
 
   <div
     id="adminContent"
     style="display:none;">
 
 
-    <!-- =====================================
-         ADMIN STATISTICS
-         ===================================== -->
+    <!-- SERVICE HOUR STATS -->
 
     <div class="admin-stats">
 
-
       <div class="admin-stat">
-
-        <span>
-          Pending
-        </span>
-
-        <strong id="pendingCount">
-          0
-        </strong>
-
+        <span>Pending</span>
+        <strong id="pendingCount">0</strong>
       </div>
 
-
       <div class="admin-stat">
-
-        <span>
-          Approved
-        </span>
-
-        <strong id="approvedCount">
-          0
-        </strong>
-
+        <span>Approved</span>
+        <strong id="approvedCount">0</strong>
       </div>
 
-
       <div class="admin-stat">
-
-        <span>
-          Rejected
-        </span>
-
-        <strong id="rejectedCount">
-          0
-        </strong>
-
+        <span>Rejected</span>
+        <strong id="rejectedCount">0</strong>
       </div>
 
-
       <div class="admin-stat">
-
-        <span>
-          Total Hours
-        </span>
-
-        <strong id="totalHours">
-          0
-        </strong>
-
+        <span>Total Hours</span>
+        <strong id="totalHours">0</strong>
       </div>
-
 
     </div>
 
 
-
-    <!-- =====================================
-         SERVICE HOURS
-         ===================================== -->
+    <!-- SERVICE HOURS -->
 
     <div class="admin-toolbar">
 
@@ -285,12 +176,10 @@
     </div>
 
 
-
     <div
       id="adminMessage"
       class="admin-message">
     </div>
-
 
 
     <div id="submissions">
@@ -302,15 +191,11 @@
     </div>
 
 
-
-    <!-- =====================================
+    <!-- ===================================
          EVENT MANAGEMENT
-         ===================================== -->
+         =================================== -->
 
     <section class="admin-events-section">
-
-
-      <!-- EVENT MANAGEMENT HEADER -->
 
       <div class="section-heading">
 
@@ -325,8 +210,8 @@
           </h2>
 
           <p>
-            Create and manage NHS events that
-            appear on the public Events page.
+            Create and manage NHS events that appear
+            on the public Events page.
           </p>
 
         </div>
@@ -334,10 +219,7 @@
       </div>
 
 
-
-      <!-- ===================================
-           CREATE EVENT FORM
-           =================================== -->
+      <!-- CREATE EVENT -->
 
       <div class="event-admin-form">
 
@@ -348,11 +230,8 @@
 
         <form id="eventForm">
 
-
           <div class="admin-form-grid">
 
-
-            <!-- EVENT NAME -->
 
             <div class="form-group">
 
@@ -368,9 +247,6 @@
 
             </div>
 
-
-
-            <!-- EVENT TYPE -->
 
             <div class="form-group">
 
@@ -405,9 +281,6 @@
             </div>
 
 
-
-            <!-- DATE -->
-
             <div class="form-group">
 
               <label for="eventDate">
@@ -421,9 +294,6 @@
 
             </div>
 
-
-
-            <!-- TIME -->
 
             <div class="form-group">
 
@@ -439,9 +309,6 @@
             </div>
 
 
-
-            <!-- LOCATION -->
-
             <div class="form-group">
 
               <label for="eventLocation">
@@ -455,12 +322,8 @@
 
             </div>
 
-
           </div>
 
-
-
-          <!-- DESCRIPTION -->
 
           <div class="form-group">
 
@@ -473,7 +336,6 @@
               placeholder="Describe the event..."></textarea>
 
           </div>
-
 
 
           <button
@@ -491,16 +353,12 @@
             class="admin-message">
           </p>
 
-
         </form>
 
       </div>
 
 
-
-      <!-- ===================================
-           EXISTING EVENTS
-           =================================== -->
+      <!-- EXISTING EVENTS -->
 
       <div class="admin-events-list">
 
@@ -531,19 +389,14 @@
 
       </div>
 
-
     </section>
-
 
   </div>
 
 </section>
 
 
-
-<!-- =========================================
-     FOOTER
-     ========================================= -->
+<!-- FOOTER -->
 
 <footer class="site-footer">
 
@@ -561,7 +414,6 @@
 
     </div>
 
-
     <p>
       © 2026 Alamogordo High School NHS
     </p>
@@ -571,9 +423,7 @@
 </footer>
 
 
-
 <script>
-
 
 /* =========================================
    SUPABASE
@@ -582,10 +432,8 @@
 const SUPABASE_URL =
   "https://biysmsrusfnjjadtvhxj.supabase.co";
 
-
 const SUPABASE_KEY =
   "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
-
 
 const supabaseClient =
   supabase.createClient(
@@ -597,9 +445,8 @@ const supabaseClient =
 let currentUser = null;
 
 
-
 /* =========================================
-   CHECK ADMIN ACCESS
+   CHECK ADMIN
    ========================================= */
 
 async function checkAdmin() {
@@ -607,15 +454,13 @@ async function checkAdmin() {
   const {
     data,
     error
-  } = await supabaseClient.auth.getSession();
+  } =
+    await supabaseClient.auth.getSession();
 
 
   if (error) {
 
-    console.error(
-      "Session error:",
-      error
-    );
+    console.error(error);
 
     window.location.href =
       "login.html";
@@ -639,25 +484,19 @@ async function checkAdmin() {
     data.session.user;
 
 
-  /*
-     Check the logged-in user's role.
-  */
-
   const {
     data: profile,
     error: profileError
   } =
     await supabaseClient
-
       .from("profiles")
-
-      .select("role")
-
+      .select(
+        "role, full_name, school_email"
+      )
       .eq(
         "id",
         currentUser.id
       )
-
       .single();
 
 
@@ -679,10 +518,6 @@ async function checkAdmin() {
   }
 
 
-  /*
-     User is authorized.
-  */
-
   document
     .getElementById("adminContent")
     .style.display = "block";
@@ -695,103 +530,8 @@ async function checkAdmin() {
 }
 
 
-
 /* =========================================
-   LOAD MEMBER PROFILES
-   ========================================= */
-
-async function loadMemberProfiles(memberIds) {
-
-  /*
-     Remove empty IDs and duplicates.
-  */
-
-  const uniqueIds =
-    [
-      ...new Set(
-        (memberIds || []).filter(Boolean)
-      )
-    ];
-
-
-  /*
-     Nothing to look up.
-  */
-
-  if (uniqueIds.length === 0) {
-
-    return {};
-
-  }
-
-
-  /*
-     Get the names from profiles.
-  */
-
-  const {
-    data: profiles,
-    error
-  } =
-    await supabaseClient
-
-      .from("profiles")
-
-      .select(
-        "id, full_name"
-      )
-
-      .in(
-        "id",
-        uniqueIds
-      );
-
-
-  if (error) {
-
-    console.error(
-      "Error loading member profiles:",
-      error
-    );
-
-    return {};
-
-  }
-
-
-  /*
-     Create a lookup object.
-
-     Example:
-
-     {
-       "uuid-here": "John Smith",
-       "another-uuid": "Jane Doe"
-     }
-  */
-
-  const memberNames = {};
-
-
-  (profiles || []).forEach(
-    function(profile) {
-
-      memberNames[profile.id] =
-        profile.full_name ||
-        "Unknown Member";
-
-    }
-  );
-
-
-  return memberNames;
-
-}
-
-
-
-/* =========================================
-   LOAD SERVICE-HOUR SUBMISSIONS
+   LOAD SERVICE HOURS
    ========================================= */
 
 async function loadSubmissions() {
@@ -803,11 +543,9 @@ async function loadSubmissions() {
 
 
   container.innerHTML = `
-
     <p class="loading-text">
       Loading submissions...
     </p>
-
   `;
 
 
@@ -817,17 +555,10 @@ async function loadSubmissions() {
     ).value;
 
 
-  /*
-     Get submissions.
-  */
-
   let query =
     supabaseClient
-
       .from("service_hours")
-
       .select("*")
-
       .order(
         "service_date",
         {
@@ -835,10 +566,6 @@ async function loadSubmissions() {
         }
       );
 
-
-  /*
-     Apply status filter.
-  */
 
   if (filter !== "all") {
 
@@ -858,16 +585,11 @@ async function loadSubmissions() {
     await query;
 
 
-  /*
-     Handle database errors.
-  */
-
   if (error) {
 
     console.error(error);
 
     container.innerHTML = `
-
       <div class="empty-hours">
 
         <h3>
@@ -881,7 +603,6 @@ async function loadSubmissions() {
         </p>
 
       </div>
-
     `;
 
     return;
@@ -890,17 +611,89 @@ async function loadSubmissions() {
 
 
   /*
-     Update dashboard statistics.
-  */
+   * ==========================================
+   * GET MEMBER IDs
+   * ==========================================
+   *
+   * We collect the member IDs from the
+   * service_hours table.
+   */
+
+  const memberIds =
+    [
+      ...new Set(
+        (data || [])
+          .map(
+            item =>
+              item.member_id
+          )
+          .filter(Boolean)
+      )
+    ];
+
+
+  /*
+   * ==========================================
+   * GET MEMBER NAMES
+   * ==========================================
+   *
+   * This is intentionally done as a separate
+   * query.
+   *
+   * It does NOT require a foreign-key
+   * relationship between service_hours
+   * and profiles.
+   */
+
+  let profileMap = {};
+
+
+  if (memberIds.length > 0) {
+
+    const {
+      data: profiles,
+      error: profilesError
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select(
+          "id, full_name, school_email"
+        )
+        .in(
+          "id",
+          memberIds
+        );
+
+
+    if (profilesError) {
+
+      console.error(
+        "Error loading member profiles:",
+        profilesError
+      );
+
+    }
+    else {
+
+      (profiles || []).forEach(
+        function(profile) {
+
+          profileMap[
+            profile.id
+          ] = profile;
+
+        }
+      );
+
+    }
+
+  }
+
 
   updateStats(
     data || []
   );
 
-
-  /*
-     No submissions.
-  */
 
   if (
     !data ||
@@ -908,7 +701,6 @@ async function loadSubmissions() {
   ) {
 
     container.innerHTML = `
-
       <div class="empty-hours">
 
         <h3>
@@ -921,7 +713,6 @@ async function loadSubmissions() {
         </p>
 
       </div>
-
     `;
 
     return;
@@ -929,44 +720,11 @@ async function loadSubmissions() {
   }
 
 
-  /*
-     Get all member IDs.
-  */
-
-  const memberIds =
-    data.map(
-      function(item) {
-
-        return item.member_id;
-
-      }
-    );
-
-
-  /*
-     Get member names.
-  */
-
-  const memberNames =
-    await loadMemberProfiles(
-      memberIds
-    );
-
-
-  /*
-     Clear loading message.
-  */
-
   container.innerHTML = "";
 
 
-  /*
-     Create each submission card.
-  */
-
   data.forEach(
     function(item) {
-
 
       const card =
         document.createElement(
@@ -979,63 +737,67 @@ async function loadSubmissions() {
 
 
       /*
-         Find member name.
+       * Find the profile using
+       * service_hours.member_id
+       */
 
-         If the profile can't be found,
-         display Unknown Member instead
-         of the UUID.
-      */
-
-      const memberName =
-        memberNames[item.member_id] ||
-        "Unknown Member";
+      const member =
+        profileMap[
+          item.member_id
+        ];
 
 
       /*
-         Build card.
-      */
+       * Show the person's name.
+       *
+       * If no matching profile exists,
+       * show "NHS Member".
+       */
+
+      const memberName =
+        member?.full_name ||
+        "NHS Member";
+
+
+      const memberEmail =
+        member?.school_email ||
+        "";
+
 
       card.innerHTML = `
 
         <div class="admin-submission-top">
 
-
           <div>
 
-
-            <span
-              class="admin-status status-${escapeHtml(
-                item.status
-              )}">
+            <span class="admin-status status-${escapeHtml(
+              item.status || "pending"
+            )}">
 
               ${escapeHtml(
-                item.status
+                item.status ||
+                "pending"
               )}
 
             </span>
 
 
             <h3>
-
               ${escapeHtml(
-                item.event_name
+                item.event_name ||
+                "Service Activity"
               )}
-
             </h3>
 
-
           </div>
-
 
 
           <div class="admin-hours">
 
             <strong>
-
               ${escapeHtml(
-                String(item.hours)
+                item.hours || "0"
               )}
-
             </strong>
 
             <span>
@@ -1044,27 +806,10 @@ async function loadSubmissions() {
 
           </div>
 
-
         </div>
 
 
-
         <div class="admin-details">
-
-
-          <p>
-
-            <strong>
-              Date:
-            </strong>
-
-            ${escapeHtml(
-              item.service_date
-            )}
-
-          </p>
-
-
 
           <p>
 
@@ -1078,6 +823,38 @@ async function loadSubmissions() {
 
           </p>
 
+
+          ${
+            memberEmail
+              ? `
+                <p>
+
+                  <strong>
+                    Email:
+                  </strong>
+
+                  ${escapeHtml(
+                    memberEmail
+                  )}
+
+                </p>
+              `
+              : ""
+          }
+
+
+          <p>
+
+            <strong>
+              Date:
+            </strong>
+
+            ${escapeHtml(
+              item.service_date ||
+              ""
+            )}
+
+          </p>
 
 
           <p>
@@ -1093,16 +870,18 @@ async function loadSubmissions() {
 
           </p>
 
-
         </div>
-
 
 
         <div class="admin-review">
 
+          <label
+            for="note-${escapeHtml(
+              item.id
+            )}">
 
-          <label>
             Review Note
+
           </label>
 
 
@@ -1111,9 +890,9 @@ async function loadSubmissions() {
               item.id
             )}"
             placeholder="Optional note for the member...">${escapeHtml(
-              item.review_note || ""
+              item.review_note ||
+              ""
             )}</textarea>
-
 
 
           <div class="admin-actions">
@@ -1132,7 +911,6 @@ async function loadSubmissions() {
             </button>
 
 
-
             <button
               type="button"
               class="reject-button"
@@ -1144,7 +922,6 @@ async function loadSubmissions() {
               ✕ Reject
 
             </button>
-
 
 
             <button
@@ -1161,7 +938,6 @@ async function loadSubmissions() {
 
           </div>
 
-
         </div>
 
       `;
@@ -1171,16 +947,14 @@ async function loadSubmissions() {
         card
       );
 
-
     }
   );
 
 }
 
 
-
 /* =========================================
-   UPDATE ADMIN STATISTICS
+   UPDATE STATS
    ========================================= */
 
 function updateStats(data) {
@@ -1197,13 +971,15 @@ function updateStats(data) {
   data.forEach(
     function(item) {
 
-
       hours +=
-        Number(item.hours) || 0;
+        Number(
+          item.hours
+        ) || 0;
 
 
       if (
-        item.status === "pending"
+        item.status ===
+        "pending"
       ) {
 
         pending++;
@@ -1212,7 +988,8 @@ function updateStats(data) {
 
 
       if (
-        item.status === "approved"
+        item.status ===
+        "approved"
       ) {
 
         approved++;
@@ -1221,13 +998,13 @@ function updateStats(data) {
 
 
       if (
-        item.status === "rejected"
+        item.status ===
+        "rejected"
       ) {
 
         rejected++;
 
       }
-
 
     }
   );
@@ -1267,16 +1044,14 @@ function updateStats(data) {
 }
 
 
-
 /* =========================================
-   APPROVE / REJECT SUBMISSION
+   APPROVE / REJECT
    ========================================= */
 
 async function reviewSubmission(
   id,
   status
 ) {
-
 
   const noteElement =
     document.getElementById(
@@ -1294,22 +1069,17 @@ async function reviewSubmission(
     error
   } =
     await supabaseClient
-
       .from("service_hours")
-
       .update({
 
-        status:
-          status,
+        status: status,
 
-        review_note:
-          note,
+        review_note: note,
 
         reviewed_at:
           new Date().toISOString()
 
       })
-
       .eq(
         "id",
         id
@@ -1317,8 +1087,6 @@ async function reviewSubmission(
 
 
   if (error) {
-
-    console.error(error);
 
     showMessage(
       "Error: " +
@@ -1330,21 +1098,11 @@ async function reviewSubmission(
   }
 
 
-  if (
+  showMessage(
     status === "approved"
-  ) {
-
-    showMessage(
-      "Service hours approved."
-    );
-
-  } else {
-
-    showMessage(
-      "Service hours rejected."
-    );
-
-  }
+      ? "Service hours approved."
+      : "Service hours rejected."
+  );
 
 
   await loadSubmissions();
@@ -1352,13 +1110,11 @@ async function reviewSubmission(
 }
 
 
-
 /* =========================================
-   SAVE REVIEW NOTE
+   SAVE NOTE
    ========================================= */
 
 async function saveNote(id) {
-
 
   const noteElement =
     document.getElementById(
@@ -1366,38 +1122,25 @@ async function saveNote(id) {
     );
 
 
-  if (!noteElement) {
-
-    showMessage(
-      "Unable to find review note."
-    );
-
-    return;
-
-  }
-
-
   const note =
-    noteElement.value.trim();
+    noteElement
+      ? noteElement.value.trim()
+      : "";
 
 
   const {
     error
   } =
     await supabaseClient
-
       .from("service_hours")
-
       .update({
 
-        review_note:
-          note,
+        review_note: note,
 
         reviewed_at:
           new Date().toISOString()
 
       })
-
       .eq(
         "id",
         id
@@ -1405,8 +1148,6 @@ async function saveNote(id) {
 
 
   if (error) {
-
-    console.error(error);
 
     showMessage(
       "Error: " +
@@ -1425,13 +1166,11 @@ async function saveNote(id) {
 }
 
 
-
 /* =========================================
    LOAD ADMIN EVENTS
    ========================================= */
 
 async function loadAdminEvents() {
-
 
   const container =
     document.getElementById(
@@ -1440,18 +1179,14 @@ async function loadAdminEvents() {
 
 
   if (!container) {
-
     return;
-
   }
 
 
   container.innerHTML = `
-
     <p class="loading-text">
       Loading events...
     </p>
-
   `;
 
 
@@ -1460,11 +1195,8 @@ async function loadAdminEvents() {
     error
   } =
     await supabaseClient
-
       .from("events")
-
       .select("*")
-
       .order(
         "event_date",
         {
@@ -1478,7 +1210,6 @@ async function loadAdminEvents() {
     console.error(error);
 
     container.innerHTML = `
-
       <div class="empty-hours">
 
         <h3>
@@ -1492,7 +1223,6 @@ async function loadAdminEvents() {
         </p>
 
       </div>
-
     `;
 
     return;
@@ -1506,7 +1236,6 @@ async function loadAdminEvents() {
   ) {
 
     container.innerHTML = `
-
       <div class="empty-hours">
 
         <h3>
@@ -1518,7 +1247,6 @@ async function loadAdminEvents() {
         </p>
 
       </div>
-
     `;
 
     return;
@@ -1527,111 +1255,106 @@ async function loadAdminEvents() {
 
 
   container.innerHTML =
-    events.map(
-      function(event) {
+    events
+      .map(
+        function(event) {
 
+          return `
 
-        return `
+            <div class="admin-event-card">
 
-          <div class="admin-event-card">
+              <div class="admin-event-card-content">
 
+                <span class="admin-event-type">
 
-            <div class="admin-event-card-content">
-
-
-              <span class="admin-event-type">
-
-                ${escapeHtml(
-                  event.event_type ||
-                  "NHS"
-                )}
-
-              </span>
-
-
-              <h3>
-
-                ${escapeHtml(
-                  event.title
-                )}
-
-              </h3>
-
-
-              <p>
-
-                ${escapeHtml(
-                  event.description ||
-                  "No description provided."
-                )}
-
-              </p>
-
-
-              <div class="admin-event-details">
-
-
-                <span>
-
-                  📅
-                  ${formatEventDate(
-                    event.event_date
-                  )}
-
-                </span>
-
-
-                <span>
-
-                  🕐
                   ${escapeHtml(
-                    event.event_time ||
-                    "Time TBD"
+                    event.event_type ||
+                    "NHS"
                   )}
 
                 </span>
 
 
-                <span>
+                <h3>
 
-                  📍
                   ${escapeHtml(
-                    event.location ||
-                    "Location TBD"
+                    event.title
                   )}
 
-                </span>
+                </h3>
 
+
+                <p>
+
+                  ${escapeHtml(
+                    event.description ||
+                    "No description provided."
+                  )}
+
+                </p>
+
+
+                <div class="admin-event-details">
+
+                  <span>
+
+                    📅
+
+                    ${formatEventDate(
+                      event.event_date
+                    )}
+
+                  </span>
+
+
+                  <span>
+
+                    🕐
+
+                    ${escapeHtml(
+                      event.event_time ||
+                      "Time TBD"
+                    )}
+
+                  </span>
+
+
+                  <span>
+
+                    📍
+
+                    ${escapeHtml(
+                      event.location ||
+                      "Location TBD"
+                    )}
+
+                  </span>
+
+                </div>
 
               </div>
 
 
+              <button
+                type="button"
+                class="delete-event-button"
+                onclick="deleteEvent(
+                  '${escapeJs(event.id)}'
+                )">
+
+                Delete
+
+              </button>
+
             </div>
 
+          `;
 
-
-            <button
-              type="button"
-              class="delete-event-button"
-              onclick="deleteEvent(
-                '${escapeJs(event.id)}'
-              )">
-
-              Delete
-
-            </button>
-
-
-          </div>
-
-        `;
-
-
-      }
-    ).join("");
+        }
+      )
+      .join("");
 
 }
-
 
 
 /* =========================================
@@ -1645,7 +1368,6 @@ document
   .addEventListener(
     "submit",
     async function(event) {
-
 
       event.preventDefault();
 
@@ -1662,29 +1384,23 @@ document
         );
 
 
-      button.disabled =
-        true;
-
+      button.disabled = true;
 
       button.textContent =
         "Creating...";
 
-
       message.textContent =
         "";
 
-
-
-      /*
-         Verify logged-in user.
-      */
 
       const {
         data: {
           user
         }
       } =
-        await supabaseClient.auth.getUser();
+        await supabaseClient
+          .auth
+          .getUser();
 
 
       if (!user) {
@@ -1693,9 +1409,7 @@ document
           "You must be logged in.";
 
 
-        button.disabled =
-          false;
-
+        button.disabled = false;
 
         button.textContent =
           "+ Create Event";
@@ -1705,11 +1419,6 @@ document
 
       }
 
-
-
-      /*
-         Get form values.
-      */
 
       const title =
         document
@@ -1763,22 +1472,14 @@ document
           .trim();
 
 
-
-      /*
-         Insert event.
-      */
-
       const {
         error
       } =
         await supabaseClient
-
           .from("events")
-
           .insert({
 
-            title:
-              title,
+            title: title,
 
             event_type:
               eventType,
@@ -1805,15 +1506,12 @@ document
 
         console.error(error);
 
-
         message.textContent =
           "Error creating event: " +
           error.message;
 
 
-        button.disabled =
-          false;
-
+        button.disabled = false;
 
         button.textContent =
           "+ Create Event";
@@ -1823,10 +1521,6 @@ document
 
       }
 
-
-      /*
-         Success.
-      */
 
       message.textContent =
         "Event created successfully!";
@@ -1839,9 +1533,7 @@ document
         .reset();
 
 
-      button.disabled =
-        false;
-
+      button.disabled = false;
 
       button.textContent =
         "+ Create Event";
@@ -1849,21 +1541,8 @@ document
 
       await loadAdminEvents();
 
-
-      setTimeout(
-        function() {
-
-          message.textContent =
-            "";
-
-        },
-        4000
-      );
-
-
     }
   );
-
 
 
 /* =========================================
@@ -1872,7 +1551,6 @@ document
 
 async function deleteEvent(id) {
 
-
   const confirmed =
     window.confirm(
       "Are you sure you want to delete this event?"
@@ -1880,9 +1558,7 @@ async function deleteEvent(id) {
 
 
   if (!confirmed) {
-
     return;
-
   }
 
 
@@ -1890,11 +1566,8 @@ async function deleteEvent(id) {
     error
   } =
     await supabaseClient
-
       .from("events")
-
       .delete()
-
       .eq(
         "id",
         id
@@ -1925,18 +1598,14 @@ async function deleteEvent(id) {
 }
 
 
-
 /* =========================================
    FORMAT EVENT DATE
    ========================================= */
 
 function formatEventDate(date) {
 
-
   if (!date) {
-
     return "Date TBD";
-
   }
 
 
@@ -1961,31 +1630,20 @@ function formatEventDate(date) {
   return d.toLocaleDateString(
     "en-US",
     {
-
-      month:
-        "long",
-
-      day:
-        "numeric",
-
-      year:
-        "numeric"
-
+      month: "long",
+      day: "numeric",
+      year: "numeric"
     }
   );
 
 }
 
 
-
 /* =========================================
    EVENT MESSAGE
    ========================================= */
 
-function showEventMessage(
-  message
-) {
-
+function showEventMessage(message) {
 
   const box =
     document.getElementById(
@@ -1994,9 +1652,7 @@ function showEventMessage(
 
 
   if (!box) {
-
     return;
-
   }
 
 
@@ -2007,8 +1663,7 @@ function showEventMessage(
   setTimeout(
     function() {
 
-      box.textContent =
-        "";
+      box.textContent = "";
 
     },
     4000
@@ -2017,15 +1672,11 @@ function showEventMessage(
 }
 
 
-
 /* =========================================
    ADMIN MESSAGE
    ========================================= */
 
-function showMessage(
-  message
-) {
-
+function showMessage(message) {
 
   const box =
     document.getElementById(
@@ -2034,9 +1685,7 @@ function showMessage(
 
 
   if (!box) {
-
     return;
-
   }
 
 
@@ -2047,8 +1696,7 @@ function showMessage(
   setTimeout(
     function() {
 
-      box.textContent =
-        "";
+      box.textContent = "";
 
     },
     4000
@@ -2057,13 +1705,35 @@ function showMessage(
 }
 
 
+/* =========================================
+   ESCAPE HTML
+   ========================================= */
+
+function escapeHtml(text) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.textContent =
+    text === null ||
+    text === undefined
+      ? ""
+      : String(text);
+
+
+  return div.innerHTML;
+
+}
+
 
 /* =========================================
-   JAVASCRIPT ESCAPING
+   ESCAPE JAVASCRIPT STRINGS
    ========================================= */
 
 function escapeJs(text) {
-
 
   if (
     text === null ||
@@ -2100,46 +1770,11 @@ function escapeJs(text) {
 }
 
 
-
-/* =========================================
-   HTML ESCAPING
-   ========================================= */
-
-function escapeHtml(text) {
-
-
-  if (
-    text === null ||
-    text === undefined
-  ) {
-
-    return "";
-
-  }
-
-
-  const div =
-    document.createElement(
-      "div"
-    );
-
-
-  div.textContent =
-    String(text);
-
-
-  return div.innerHTML;
-
-}
-
-
-
 /* =========================================
    LOGOUT
    ========================================= */
 
 async function logout() {
-
 
   await supabaseClient
     .auth
@@ -2152,35 +1787,30 @@ async function logout() {
 }
 
 
-
 /* =========================================
    MOBILE MENU
    ========================================= */
 
 function toggleMenu() {
 
-
   document
     .getElementById(
       "mainNav"
     )
-    .classList
-    .toggle("open");
+    .classList.toggle(
+      "open"
+    );
 
 }
 
 
-
 /* =========================================
-   START ADMIN DASHBOARD
+   START
    ========================================= */
 
 checkAdmin();
 
-
 </script>
 
-
 </body>
-
 </html>
