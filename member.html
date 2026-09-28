@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -20,6 +21,11 @@
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
 <header class="site-header">
 
   <div class="nav-container">
@@ -31,8 +37,15 @@
       </div>
 
       <div class="brand-text">
-        <strong>ALAMOGORDO HIGH SCHOOL</strong>
-        <span>National Honor Society</span>
+
+        <strong>
+          ALAMOGORDO HIGH SCHOOL
+        </strong>
+
+        <span>
+          National Honor Society
+        </span>
+
       </div>
 
     </a>
@@ -41,6 +54,7 @@
     <button
       class="menu-toggle"
       onclick="toggleMenu()"
+      aria-label="Open navigation menu"
     >
       ☰
     </button>
@@ -48,16 +62,30 @@
 
     <nav id="mainNav">
 
-      <a href="index.html">Home</a>
-      <a href="events.html">Events</a>
-      <a href="service.html">Service</a>
-      <a href="resources.html">Resources</a>
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
 
       <a href="member.html" class="active">
         Dashboard
       </a>
 
-      <a href="#" onclick="logout(); return false;">
+      <a
+        href="#"
+        onclick="logout(); return false;"
+      >
         Log Out
       </a>
 
@@ -68,7 +96,12 @@
 </header>
 
 
-<section class="page-hero">
+
+<!-- =========================================
+     DASHBOARD HERO
+     ========================================= -->
+
+<section class="page-hero dashboard-hero">
 
   <div class="page-hero-inner">
 
@@ -89,140 +122,384 @@
 </section>
 
 
-<section class="content-section">
+
+<!-- =========================================
+     MAIN DASHBOARD
+     ========================================= -->
+
+<main class="content-section">
 
 
-  <!-- PROFILE -->
+  <!-- WELCOME CARD -->
 
   <div class="dashboard-welcome">
 
-    <h2 id="memberName">
-      Welcome!
-    </h2>
+    <div>
 
-    <p id="memberEmail">
-      Loading account information...
-    </p>
+      <p class="eyebrow">
+        AHS NATIONAL HONOR SOCIETY
+      </p>
+
+      <h2 id="memberName">
+        Welcome!
+      </h2>
+
+      <p id="memberEmail">
+        Loading account information...
+      </p>
+
+    </div>
+
+
+    <div class="member-status">
+
+      <span>
+        ACCOUNT
+      </span>
+
+      <strong id="memberStatus">
+        ACTIVE
+      </strong>
+
+    </div>
 
   </div>
+
+
+
+  <!-- QUICK STATS -->
+
+  <div class="member-stats">
+
+
+    <div class="member-stat">
+
+      <span>
+        MEMBER
+      </span>
+
+      <strong>
+        NHS
+      </strong>
+
+      <p>
+        National Honor Society
+      </p>
+
+    </div>
+
+
+    <div class="member-stat">
+
+      <span>
+        ROLE
+      </span>
+
+      <strong id="statRole">
+        Member
+      </strong>
+
+      <p>
+        Your account permissions
+      </p>
+
+    </div>
+
+
+    <div class="member-stat">
+
+      <span>
+        ACCOUNT
+      </span>
+
+      <strong>
+        ✓
+      </strong>
+
+      <p>
+        Successfully signed in
+      </p>
+
+    </div>
+
+
+  </div>
+
 
 
   <!-- DASHBOARD CARDS -->
 
-  <div class="feature-grid">
+  <div class="dashboard-card-grid">
 
 
-    <div class="feature-card">
+    <!-- SERVICE -->
 
-      <h2>🤝 Service Hours</h2>
+    <div class="dashboard-card">
 
-      <p>
-        Submit and track your NHS community service hours.
-      </p>
+      <div class="dashboard-card-icon">
+        🤝
+      </div>
 
-      <a href="service-hours.html" class="gold-button">
-        Submit Hours
-      </a>
+      <div class="dashboard-card-content">
 
-    </div>
+        <h2>
+          Service Hours
+        </h2>
 
+        <p>
+          Submit and track your NHS community
+          service hours.
+        </p>
 
-    <div class="feature-card">
+        <a
+          href="service-hours.html"
+          class="gold-button"
+        >
+          Manage Service Hours →
+        </a>
 
-      <h2>📅 Events</h2>
-
-      <p>
-        View upcoming NHS events and service opportunities.
-      </p>
-
-      <a href="events.html" class="gold-button">
-        View Events
-      </a>
-
-    </div>
-
-
-    <div class="feature-card">
-
-      <h2>📣 Announcements</h2>
-
-      <p>
-        See the latest information from NHS leadership.
-      </p>
-
-      <a href="announcements.html" class="gold-button">
-        View Announcements
-      </a>
+      </div>
 
     </div>
 
 
-    <div class="feature-card">
 
-      <h2>📄 Resources</h2>
+    <!-- EVENTS -->
 
-      <p>
-        Access NHS documents, forms, and member resources.
-      </p>
+    <div class="dashboard-card">
 
-      <a href="resources.html" class="gold-button">
-        View Resources
-      </a>
+      <div class="dashboard-card-icon">
+        📅
+      </div>
+
+      <div class="dashboard-card-content">
+
+        <h2>
+          Events
+        </h2>
+
+        <p>
+          View upcoming NHS meetings,
+          service projects, and events.
+        </p>
+
+        <a
+          href="events.html"
+          class="gold-button"
+        >
+          View Events →
+        </a>
+
+      </div>
 
     </div>
+
+
+
+    <!-- ANNOUNCEMENTS -->
+
+    <div class="dashboard-card">
+
+      <div class="dashboard-card-icon">
+        📣
+      </div>
+
+      <div class="dashboard-card-content">
+
+        <h2>
+          Announcements
+        </h2>
+
+        <p>
+          Stay up to date with information
+          from NHS leadership.
+        </p>
+
+        <a
+          href="announcements.html"
+          class="gold-button"
+        >
+          View Announcements →
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- RESOURCES -->
+
+    <div class="dashboard-card">
+
+      <div class="dashboard-card-icon">
+        📄
+      </div>
+
+      <div class="dashboard-card-content">
+
+        <h2>
+          Resources
+        </h2>
+
+        <p>
+          Access NHS documents, forms,
+          guidelines, and other resources.
+        </p>
+
+        <a
+          href="resources.html"
+          class="gold-button"
+        >
+          View Resources →
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ADMIN PANEL -->
+
+    <div
+      class="dashboard-card admin-dashboard-card"
+      id="adminPanel"
+      style="display: none;"
+    >
+
+      <div class="dashboard-card-icon">
+        🛡️
+      </div>
+
+      <div class="dashboard-card-content">
+
+        <div class="admin-label">
+          LEADERSHIP ACCESS
+        </div>
+
+        <h2>
+          Admin Dashboard
+        </h2>
+
+        <p>
+          Review service-hour submissions
+          and manage NHS member records.
+        </p>
+
+        <a
+          href="admin.html"
+          class="gold-button"
+        >
+          Open Admin Dashboard →
+        </a>
+
+      </div>
+
+    </div>
+
 
   </div>
-<div class="feature-card">
 
-  <h2>🛡️ Admin Panel</h2>
 
-  <p>
-    Review member service-hour submissions
-    and manage NHS records.
-  </p>
-
-  <br>
-
-  <a
-    href="admin.html"
-    class="gold-button">
-
-    Open Admin Dashboard
-
-  </a>
-
-</div>
 
   <!-- ACCOUNT INFORMATION -->
 
-  <div class="feature-card account-card">
+  <section class="account-section">
 
-    <h2>Account Information</h2>
+    <div class="section-heading">
 
-    <div class="account-info">
+      <div>
 
-      <p>
-        <strong>Name:</strong>
-        <span id="accountName">Loading...</span>
-      </p>
+        <p class="eyebrow">
+          YOUR ACCOUNT
+        </p>
 
-      <p>
-        <strong>Email:</strong>
-        <span id="accountEmail">Loading...</span>
-      </p>
+        <h2>
+          Account Information
+        </h2>
 
-      <p>
-        <strong>Role:</strong>
-        <span id="accountRole">Loading...</span>
-      </p>
+      </div>
 
     </div>
 
-  </div>
+
+    <div class="account-card">
 
 
-</section>
+      <div class="account-row">
 
+        <span>
+          Name
+        </span>
+
+        <strong id="accountName">
+          Loading...
+        </strong>
+
+      </div>
+
+
+      <div class="account-row">
+
+        <span>
+          School Email
+        </span>
+
+        <strong id="accountEmail">
+          Loading...
+        </strong>
+
+      </div>
+
+
+      <div class="account-row">
+
+        <span>
+          Role
+        </span>
+
+        <strong id="accountRole">
+          Loading...
+        </strong>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- NHS MESSAGE -->
+
+  <section class="member-message">
+
+    <p class="eyebrow">
+      SCHOLARSHIP • SERVICE • LEADERSHIP • CHARACTER
+    </p>
+
+    <h2>
+      Represent AHS with excellence.
+    </h2>
+
+    <p>
+      Your membership in National Honor Society
+      represents a commitment to your school
+      and your community.
+    </p>
+
+  </section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
 
 <footer class="site-footer">
 
@@ -241,14 +518,46 @@
     </div>
 
 
-    <p>
-      © 2026 Alamogordo High School NHS
-    </p>
+    <div class="footer-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="index.html#contact">
+        Contact
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 Alamogordo High School NHS
 
   </div>
 
 </footer>
 
+
+
+<!-- =========================================
+     SUPABASE
+     ========================================= -->
 
 <script>
 
@@ -266,19 +575,38 @@ const supabaseClient =
   );
 
 
+
+/* =========================================
+   LOAD MEMBER
+   ========================================= */
+
 async function loadMember() {
 
   const {
-    data: sessionData
+    data: sessionData,
+    error: sessionError
   } = await supabaseClient.auth.getSession();
+
+
+  if (sessionError) {
+
+    console.error(sessionError);
+
+    window.location.href =
+      "login.html";
+
+    return;
+
+  }
 
 
   const session =
     sessionData.session;
 
 
-  // If the user isn't logged in,
-  // send them back to login.
+  /*
+    User isn't logged in.
+  */
 
   if (!session) {
 
@@ -294,7 +622,10 @@ async function loadMember() {
     session.user;
 
 
-  // Get profile information
+
+  /*
+    Get profile.
+  */
 
   const {
     data: profile,
@@ -312,29 +643,47 @@ async function loadMember() {
 
   if (error) {
 
-    console.error(error);
+    console.error(
+      "Profile error:",
+      error
+    );
+
 
     document.getElementById(
       "welcomeText"
     ).textContent =
       "Unable to load your profile.";
 
+
     return;
 
   }
 
 
+
+  /*
+    Account information.
+  */
+
   const name =
-    profile.full_name || "NHS Member";
+    profile.full_name ||
+    "NHS Member";
 
 
   const email =
-    profile.school_email || user.email;
+    profile.school_email ||
+    user.email;
 
 
   const role =
-    profile.role || "member";
+    (profile.role || "member")
+      .toLowerCase();
 
+
+
+  /*
+    Welcome section.
+  */
 
   document.getElementById(
     "memberName"
@@ -354,6 +703,11 @@ async function loadMember() {
     email;
 
 
+
+  /*
+    Account information.
+  */
+
   document.getElementById(
     "accountName"
   ).textContent =
@@ -369,26 +723,55 @@ async function loadMember() {
   document.getElementById(
     "accountRole"
   ).textContent =
-    role.charAt(0).toUpperCase() +
-    role.slice(1);
+    formatRole(role);
 
 
-  // Later we'll use this to show
-  // special admin/advisor controls.
+  document.getElementById(
+    "statRole"
+  ).textContent =
+    formatRole(role);
+
+
+
+  /*
+    Show admin dashboard ONLY
+    for admin or advisor accounts.
+  */
 
   if (
     role === "admin" ||
     role === "advisor"
   ) {
 
-    console.log(
-      "Leadership account detected."
-    );
+    document.getElementById(
+      "adminPanel"
+    ).style.display =
+      "flex";
 
   }
 
 }
 
+
+
+/* =========================================
+   FORMAT ROLE
+   ========================================= */
+
+function formatRole(role) {
+
+  return role
+    .charAt(0)
+    .toUpperCase() +
+    role.slice(1);
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+   ========================================= */
 
 async function logout() {
 
@@ -400,6 +783,11 @@ async function logout() {
 }
 
 
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+
 function toggleMenu() {
 
   document
@@ -409,8 +797,19 @@ function toggleMenu() {
 }
 
 
+
+/* =========================================
+   START
+   ========================================= */
+
 loadMember();
 
+</script>
+
+
+</body>
+
+</html>
 </script>
 
 </body>
