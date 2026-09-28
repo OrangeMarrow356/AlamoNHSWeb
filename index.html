@@ -1,238 +1,653 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Alamogordo High School National Honor Society</title>
 
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="AHS NHS Home">
-      <span class="brand-shield" aria-hidden="true">
-        <span>✦</span>
-      </span>
-      <span class="brand-text">
-        <strong>AHS <em>NHS</em></strong>
-        <small>NATIONAL HONOR SOCIETY</small>
-      </span>
+
+<header class="site-header">
+
+  <div class="nav-container">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-shield">
+        NHS
+      </div>
+
+      <div class="brand-text">
+        <strong>ALAMOGORDO HIGH SCHOOL</strong>
+        <span>National Honor Society</span>
+      </div>
+
     </a>
 
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button
+      class="menu-toggle"
+      onclick="toggleMenu()"
+      aria-label="Open menu">
+      ☰
+    </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <a class="active" href="index.html">Home</a>
+    <nav id="mainNav">
+
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="leadership.html">Leadership</a>
       <a href="events.html">Events</a>
       <a href="service.html">Service</a>
       <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-      <a class="login-button" href="login.html"> Member Login</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="member.html">Member Login</a>
+
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-decoration hero-decoration-left"></div>
-      <div class="hero-content">
-        <div class="hero-emblem" aria-hidden="true">
-          <div class="emblem-shield">
-            <span class="torch">▲</span>
-            <span class="emblem-text">NHS</span>
-          </div>
-          <div class="laurel">❮ ✦ ❯</div>
-        </div>
+  </div>
 
-        <div class="hero-copy">
-          <p class="eyebrow">ALAMOGORDO HIGH SCHOOL</p>
-          <h1>National <span>Honor Society</span></h1>
-          <p class="pillars-line">SCHOLARSHIP <b>•</b> SERVICE <b>•</b> LEADERSHIP <b>•</b> CHARACTER</p>
+</header>
 
-          <div class="hero-actions">
-            <a class="button button-gold" href="about.html">Learn More <span>→</span></a>
-            <a class="button button-outline" href="events.html">View Events <span>→</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="dashboard-grid section">
-      <div class="panel announcements">
-        <div class="panel-heading">
-          <h2> Latest Announcements</h2>
-        </div>
+<!-- HERO -->
 
-        <article class="announcement">
-          <span class="announcement-icon">▣</span>
-          <div>
-            <h3>Welcome to AHS NHS</h3>
-            <p>Important chapter announcements will appear here.</p>
-            <time>Updated September 2026</time>
-          </div>
-        </article>
+<section class="hero">
 
-        <article class="announcement">
-          <span class="announcement-icon"> </span>
-          <div>
-            <h3>Service Opportunities</h3>
-            <p>Check the Service page for current volunteer opportunities.</p>
-            <time>Updated September 2026</time>
-          </div>
-        </article>
+  <div class="hero-content">
 
-        <article class="announcement">
-          <span class="announcement-icon">!</span>
-          <div>
-            <h3>Member Information</h3>
-            <p>Private member resources are available after signing in.</p>
-            <time>Updated September 2026</time>
-          </div>
-        </article>
-      </div>
+    <p class="eyebrow">
+      ALAMOGORDO HIGH SCHOOL
+    </p>
 
-      <div class="panel events-preview">
-        <div class="panel-heading panel-heading-between">
-          <h2> Upcoming Events</h2>
-          <a href="events.html">View Full Calendar →</a>
-        </div>
+    <h1>
+      National Honor Society
+    </h1>
 
-        <div class="event-cards">
-          <article class="event-card">
-            <div class="event-date"><strong>--</strong><span>DATE</span></div>
-            <div class="event-info">
-              <h3>NHS Meeting</h3>
-              <p> AHS</p>
-              <p> Time TBD</p>
-              <a href="events.html">View Details</a>
-            </div>
-          </article>
+    <p class="hero-subtitle">
+      SCHOLARSHIP • SERVICE • LEADERSHIP • CHARACTER
+    </p>
 
-          <article class="event-card">
-            <div class="event-date"><strong>--</strong><span>DATE</span></div>
-            <div class="event-info">
-              <h3>Service Event</h3>
-              <p> Location TBD</p>
-              <p> Time TBD</p>
-              <a href="service.html">Sign Up</a>
-            </div>
-          </article>
+    <div class="hero-buttons">
 
-          <article class="event-card">
-            <div class="event-date"><strong>--</strong><span>DATE</span></div>
-            <div class="event-info">
-              <h3>Community Event</h3>
-              <p> Location TBD</p>
-              <p> Time TBD</p>
-              <a href="events.html">View Details</a>
-            </div>
-          </article>
-        </div>
-      </div>
+      <a href="about.html" class="button">
+        Learn More →
+      </a>
 
-      <aside class="panel quick-links">
-        <div class="panel-heading">
-          <h2> Quick Links</h2>
-        </div>
-            <a href="events.html">
-              📅 <span>Event Calendar</span> <b>→</b>
-            </a>
-            
-            <a href="service.html">
-              🤝 <span>Service Opportunities</span> <b>→</b>
-            </a>
-            
-            <a href="login.html">
-              🔒 <span>Member Login</span> <b>→</b>
-            </a>
-            
-            <a href="resources.html">
-              📄 <span>NHS Resources</span> <b>→</b>
-            </a>
-            
-            <a href="announcements.html">
-              📣 <span>Announcements</span> <b>→</b>
-            </a>
-                  </aside>
-                </section>
+      <a href="events.html" class="button button-outline">
+        View Events →
+      </a>
 
-    <section class="pillars section">
-      <div class="section-heading">
-        <p class="eyebrow">THE FOUNDATION OF NHS</p>
-        <h2>The Four Pillars of NHS</h2>
-        <p>These principles guide our actions and define our commitment to our school and community.</p>
-      </div>
-
-      <div class="pillar-grid">
-        <article class="pillar">
-          <div class="pillar-icon"> </div>
-          <div>
-            <h3>Scholarship</h3>
-            <p>A commitment to learning and academic excellence.</p>
-          </div>
-        </article>
-
-        <article class="pillar">
-          <div class="pillar-icon"> </div>
-          <div>
-            <h3>Service</h3>
-            <p>A dedication to helping others and improving our community.</p>
-          </div>
-        </article>
-
-        <article class="pillar">
-          <div class="pillar-icon"> </div>
-          <div>
-            <h3>Leadership</h3>
-            <p>The courage to lead by example.</p>
-          </div>
-        </article>
-
-        <article class="pillar">
-          <div class="pillar-icon"> </div>
-          <div>
-            <h3>Character</h3>
-            <p>Upholding high standards of honesty and integrity.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div>
-        <strong>Alamogordo High School</strong>
-        <span>National Honor Society</span>
-      </div>
-
-      <p class="quote">“Service to others is the rent you pay for your room here on earth.”</p>
-
-      <div class="footer-links">
-        <a href="contact.html" aria-label="Contact">✉</a>
-        <a href="events.html" aria-label="Calendar">▣</a>
-      </div>
-
-      <div class="school-mark">
-        <strong>ALAMOGORDO</strong>
-        <span>HIGH SCHOOL</span>
-      </div>
     </div>
 
-    <div class="footer-bottom">
-      <span>© <span id="year">2026</span> Alamogordo High School National Honor Society. All rights reserved.</span>
-      <span><a href="#">Privacy</a> · <a href="#">Site Info</a> · <a href="contact.html">Contact</a></span>
-    </div>
-  </footer>
+  </div>
 
-  <script src="js/script.js"></script>
+</section>
+
+
+<!-- ANNOUNCEMENTS -->
+
+<section class="dashboard-section">
+
+  <div class="section-heading">
+
+    <div>
+      <p class="eyebrow">
+        KEEP UP WITH NHS
+      </p>
+
+      <h2>
+        Latest Announcements
+      </h2>
+    </div>
+
+    <a href="announcements.html" class="text-link">
+      View All →
+    </a>
+
+  </div>
+
+
+  <div class="announcement-grid">
+
+
+    <article class="announcement-card">
+
+      <span class="announcement-tag">
+        NHS
+      </span>
+
+      <h3>
+        Welcome to AHS NHS
+      </h3>
+
+      <p>
+        Important chapter announcements will appear here.
+      </p>
+
+      <time>
+        Updated September 2026
+      </time>
+
+    </article>
+
+
+    <article class="announcement-card">
+
+      <span class="announcement-tag">
+        SERVICE
+      </span>
+
+      <h3>
+        Service Opportunities
+      </h3>
+
+      <p>
+        Check the Service page for current volunteer opportunities.
+      </p>
+
+      <time>
+        Updated September 2026
+      </time>
+
+    </article>
+
+
+    <article class="announcement-card">
+
+      <span class="announcement-tag">
+        MEMBERS
+      </span>
+
+      <h3>
+        Member Information
+      </h3>
+
+      <p>
+        Private member resources are available after signing in.
+      </p>
+
+      <time>
+        Updated September 2026
+      </time>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section class="dashboard-section dark-section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <p class="eyebrow">
+        STAY INVOLVED
+      </p>
+
+      <h2>
+        Upcoming Events
+      </h2>
+
+    </div>
+
+    <a href="events.html" class="text-link">
+      View Full Calendar →
+    </a>
+
+  </div>
+
+
+  <div class="event-grid">
+
+
+    <article class="event-card">
+
+      <div class="event-date">
+
+        <strong>
+          —
+        </strong>
+
+        <span>
+          DATE
+        </span>
+
+      </div>
+
+
+      <div class="event-info">
+
+        <h3>
+          NHS Meeting
+        </h3>
+
+        <p>
+          AHS
+        </p>
+
+        <p>
+          Time TBD
+        </p>
+
+        <a href="events.html">
+          View Details →
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <article class="event-card">
+
+      <div class="event-date">
+
+        <strong>
+          —
+        </strong>
+
+        <span>
+          DATE
+        </span>
+
+      </div>
+
+
+      <div class="event-info">
+
+        <h3>
+          Service Event
+        </h3>
+
+        <p>
+          Location TBD
+        </p>
+
+        <p>
+          Time TBD
+        </p>
+
+        <a href="service.html">
+          Sign Up →
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <article class="event-card">
+
+      <div class="event-date">
+
+        <strong>
+          —
+        </strong>
+
+        <span>
+          DATE
+        </span>
+
+      </div>
+
+
+      <div class="event-info">
+
+        <h3>
+          Community Event
+        </h3>
+
+        <p>
+          Location TBD
+        </p>
+
+        <p>
+          Time TBD
+        </p>
+
+        <a href="events.html">
+          View Details →
+        </a>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- QUICK LINKS -->
+
+<section class="dashboard-section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <p class="eyebrow">
+        NHS RESOURCES
+      </p>
+
+      <h2>
+        Quick Links
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="quick-links">
+
+
+    <a href="events.html">
+
+      <span class="quick-icon">
+        📅
+      </span>
+
+      <span>
+        Event Calendar
+      </span>
+
+      <b>
+        →
+      </b>
+
+    </a>
+
+
+    <a href="service.html">
+
+      <span class="quick-icon">
+        🤝
+      </span>
+
+      <span>
+        Service Opportunities
+      </span>
+
+      <b>
+        →
+      </b>
+
+    </a>
+
+
+    <a href="member.html">
+
+      <span class="quick-icon">
+        🔒
+      </span>
+
+      <span>
+        Member Login
+      </span>
+
+      <b>
+        →
+      </b>
+
+    </a>
+
+
+    <a href="resources.html">
+
+      <span class="quick-icon">
+        📄
+      </span>
+
+      <span>
+        NHS Resources
+      </span>
+
+      <b>
+        →
+      </b>
+
+    </a>
+
+
+    <a href="announcements.html">
+
+      <span class="quick-icon">
+        📣
+      </span>
+
+      <span>
+        Announcements
+      </span>
+
+      <b>
+        →
+      </b>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<!-- FOUR PILLARS -->
+
+<section class="pillars-section">
+
+  <div class="section-heading centered">
+
+    <p class="eyebrow">
+      THE FOUNDATION OF NHS
+    </p>
+
+    <h2>
+      The Four Pillars of NHS
+    </h2>
+
+    <p>
+      These principles guide our actions and define our commitment
+      to our school and community.
+    </p>
+
+  </div>
+
+
+  <div class="pillars-grid">
+
+
+    <article class="pillar-card">
+
+      <div class="pillar-number">
+        01
+      </div>
+
+      <h3>
+        Scholarship
+      </h3>
+
+      <p>
+        A commitment to learning and academic excellence.
+      </p>
+
+    </article>
+
+
+    <article class="pillar-card">
+
+      <div class="pillar-number">
+        02
+      </div>
+
+      <h3>
+        Service
+      </h3>
+
+      <p>
+        A dedication to helping others and improving our community.
+      </p>
+
+    </article>
+
+
+    <article class="pillar-card">
+
+      <div class="pillar-number">
+        03
+      </div>
+
+      <h3>
+        Leadership
+      </h3>
+
+      <p>
+        The courage to lead by example and make a positive difference.
+      </p>
+
+    </article>
+
+
+    <article class="pillar-card">
+
+      <div class="pillar-number">
+        04
+      </div>
+
+      <h3>
+        Character
+      </h3>
+
+      <p>
+        Upholding high standards of honesty, integrity, and responsibility.
+      </p>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- CALL TO ACTION -->
+
+<section class="cta-section">
+
+  <div>
+
+    <p class="eyebrow">
+      GET INVOLVED
+    </p>
+
+    <h2>
+      Make a Difference at AHS
+    </h2>
+
+    <p>
+      Service, leadership, scholarship, and character
+      start with getting involved.
+    </p>
+
+  </div>
+
+
+  <a href="service.html" class="button">
+    Find Service Opportunities →
+  </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+
+    <div>
+
+      <strong>
+        Alamogordo High School
+      </strong>
+
+      <p>
+        National Honor Society
+      </p>
+
+      <p>
+        "Service to others is the rent you pay for your room here on earth."
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    © 2026 Alamogordo High School National Honor Society.
+    All rights reserved.
+
+  </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+<script>
+
+function toggleMenu() {
+
+  const nav =
+    document.getElementById("mainNav");
+
+  nav.classList.toggle("open");
+
+}
+
+</script>
+
 </body>
+
 </html>
