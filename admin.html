@@ -5,13 +5,19 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>Admin Dashboard | AHS NHS</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
 
 </head>
 
@@ -19,11 +25,17 @@
 <body>
 
 
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
 <header class="site-header">
 
   <div class="nav-container">
 
-    <a href="index.html" class="brand">
+    <a
+      href="index.html"
+      class="brand">
 
       <div class="brand-shield">
         NHS
@@ -46,7 +58,8 @@
 
     <button
       class="menu-toggle"
-      onclick="toggleMenu()">
+      onclick="toggleMenu()"
+      aria-label="Open navigation menu">
 
       ☰
 
@@ -75,8 +88,9 @@
         Dashboard
       </a>
 
-      <a href="#"
-         onclick="logout(); return false;">
+      <a
+        href="#"
+        onclick="logout(); return false;">
 
         Log Out
 
@@ -89,6 +103,10 @@
 </header>
 
 
+
+<!-- =========================================
+     PAGE HERO
+     ========================================= -->
 
 <section class="page-hero">
 
@@ -103,7 +121,7 @@
     </h1>
 
     <p>
-      Review and manage NHS member service-hour submissions.
+      Review service hours and manage NHS events.
     </p>
 
   </div>
@@ -112,10 +130,16 @@
 
 
 
+<!-- =========================================
+     MAIN CONTENT
+     ========================================= -->
+
 <section class="content-section">
 
 
-  <!-- ACCESS DENIED -->
+  <!-- =======================================
+       ACCESS DENIED
+       ======================================= -->
 
   <div
     id="accessDenied"
@@ -145,13 +169,18 @@
 
 
 
-  <!-- ADMIN CONTENT -->
+  <!-- =======================================
+       ADMIN CONTENT
+       ======================================= -->
 
-  <div id="adminContent"
-       style="display:none;">
+  <div
+    id="adminContent"
+    style="display:none;">
 
 
-    <!-- SUMMARY -->
+    <!-- =====================================
+         ADMIN STATISTICS
+         ===================================== -->
 
     <div class="admin-stats">
 
@@ -212,7 +241,9 @@
 
 
 
-    <!-- FILTER -->
+    <!-- =====================================
+         SERVICE HOURS
+         ===================================== -->
 
     <div class="admin-toolbar">
 
@@ -244,7 +275,7 @@
         <option value="approved">
           Approved
         </option>
-  
+
         <option value="rejected">
           Rejected
         </option>
@@ -262,10 +293,7 @@
 
 
 
-    <!-- SUBMISSIONS -->
-
-    <div
-      id="submissions">
+    <div id="submissions">
 
       <p class="loading-text">
         Loading submissions...
@@ -275,113 +303,247 @@
 
 
 
-    <!-- =========================================
+    <!-- =====================================
          EVENT MANAGEMENT
-         ========================================= -->
+         ===================================== -->
 
     <section class="admin-events-section">
 
+
+      <!-- EVENT MANAGEMENT HEADER -->
+
       <div class="section-heading">
+
         <div>
-          <p class="eyebrow">EVENT MANAGEMENT</p>
-          <h2>Manage Events</h2>
-          <p>Create and manage NHS events that appear on the public Events page.</p>
+
+          <p class="eyebrow">
+            EVENT MANAGEMENT
+          </p>
+
+          <h2>
+            Manage Events
+          </h2>
+
+          <p>
+            Create and manage NHS events that
+            appear on the public Events page.
+          </p>
+
         </div>
+
       </div>
+
+
+
+      <!-- ===================================
+           CREATE EVENT FORM
+           =================================== -->
 
       <div class="event-admin-form">
 
-        <h3>Create New Event</h3>
+        <h3>
+          Create New Event
+        </h3>
+
 
         <form id="eventForm">
 
+
           <div class="admin-form-grid">
 
+
+            <!-- EVENT NAME -->
+
             <div class="form-group">
-              <label for="eventTitle">Event Name</label>
+
+              <label for="eventTitle">
+                Event Name
+              </label>
+
               <input
                 type="text"
                 id="eventTitle"
                 placeholder="Example: NHS General Meeting"
                 required>
+
             </div>
 
+
+
+            <!-- EVENT TYPE -->
+
             <div class="form-group">
-              <label for="eventType">Event Type</label>
+
+              <label for="eventType">
+                Event Type
+              </label>
+
               <select id="eventType">
-                <option value="NHS">NHS</option>
-                <option value="Meeting">Meeting</option>
-                <option value="Service">Service</option>
-                <option value="Community">Community</option>
-                <option value="School">School</option>
+
+                <option value="NHS">
+                  NHS
+                </option>
+
+                <option value="Meeting">
+                  Meeting
+                </option>
+
+                <option value="Service">
+                  Service
+                </option>
+
+                <option value="Community">
+                  Community
+                </option>
+
+                <option value="School">
+                  School
+                </option>
+
               </select>
+
             </div>
 
-            <div class="form-group">
-              <label for="eventDate">Date</label>
-              <input type="date" id="eventDate" required>
-            </div>
+
+
+            <!-- DATE -->
 
             <div class="form-group">
-              <label for="eventTime">Time</label>
+
+              <label for="eventDate">
+                Date
+              </label>
+
+              <input
+                type="date"
+                id="eventDate"
+                required>
+
+            </div>
+
+
+
+            <!-- TIME -->
+
+            <div class="form-group">
+
+              <label for="eventTime">
+                Time
+              </label>
+
               <input
                 type="text"
                 id="eventTime"
                 placeholder="Example: 3:30 PM">
+
             </div>
 
+
+
+            <!-- LOCATION -->
+
             <div class="form-group">
-              <label for="eventLocation">Location</label>
+
+              <label for="eventLocation">
+                Location
+              </label>
+
               <input
                 type="text"
                 id="eventLocation"
                 placeholder="Example: AHS Library">
+
             </div>
+
 
           </div>
 
+
+
+          <!-- DESCRIPTION -->
+
           <div class="form-group">
-            <label for="eventDescription">Description</label>
+
+            <label for="eventDescription">
+              Description
+            </label>
+
             <textarea
               id="eventDescription"
               placeholder="Describe the event..."></textarea>
+
           </div>
+
+
 
           <button
             type="submit"
             class="gold-button"
             id="createEventButton">
+
             + Create Event
+
           </button>
 
-          <p id="eventMessage" class="admin-message"></p>
+
+          <p
+            id="eventMessage"
+            class="admin-message">
+          </p>
+
 
         </form>
 
       </div>
 
+
+
+      <!-- ===================================
+           EXISTING EVENTS
+           =================================== -->
+
       <div class="admin-events-list">
 
         <div class="section-heading">
+
           <div>
-            <p class="eyebrow">CURRENT EVENTS</p>
-            <h2>Existing Events</h2>
+
+            <p class="eyebrow">
+              CURRENT EVENTS
+            </p>
+
+            <h2>
+              Existing Events
+            </h2>
+
           </div>
+
         </div>
 
+
         <div id="adminEventsList">
-          <p class="loading-text">Loading events...</p>
+
+          <p class="loading-text">
+            Loading events...
+          </p>
+
         </div>
 
       </div>
 
+
     </section>
+
 
   </div>
 
 </section>
 
 
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
 
 <footer class="site-footer">
 
@@ -443,9 +605,24 @@ let currentUser = null;
 async function checkAdmin() {
 
   const {
-    data
-  } =
-    await supabaseClient.auth.getSession();
+    data,
+    error
+  } = await supabaseClient.auth.getSession();
+
+
+  if (error) {
+
+    console.error(
+      "Session error:",
+      error
+    );
+
+    window.location.href =
+      "login.html";
+
+    return;
+
+  }
 
 
   if (!data.session) {
@@ -462,9 +639,13 @@ async function checkAdmin() {
     data.session.user;
 
 
+  /*
+     Check the logged-in user's role.
+  */
+
   const {
     data: profile,
-    error
+    error: profileError
   } =
     await supabaseClient
 
@@ -481,7 +662,7 @@ async function checkAdmin() {
 
 
   if (
-    error ||
+    profileError ||
     !profile ||
     (
       profile.role !== "admin" &&
@@ -498,6 +679,10 @@ async function checkAdmin() {
   }
 
 
+  /*
+     User is authorized.
+  */
+
   document
     .getElementById("adminContent")
     .style.display = "block";
@@ -512,7 +697,101 @@ async function checkAdmin() {
 
 
 /* =========================================
-   LOAD SUBMISSIONS
+   LOAD MEMBER PROFILES
+   ========================================= */
+
+async function loadMemberProfiles(memberIds) {
+
+  /*
+     Remove empty IDs and duplicates.
+  */
+
+  const uniqueIds =
+    [
+      ...new Set(
+        (memberIds || []).filter(Boolean)
+      )
+    ];
+
+
+  /*
+     Nothing to look up.
+  */
+
+  if (uniqueIds.length === 0) {
+
+    return {};
+
+  }
+
+
+  /*
+     Get the names from profiles.
+  */
+
+  const {
+    data: profiles,
+    error
+  } =
+    await supabaseClient
+
+      .from("profiles")
+
+      .select(
+        "id, full_name"
+      )
+
+      .in(
+        "id",
+        uniqueIds
+      );
+
+
+  if (error) {
+
+    console.error(
+      "Error loading member profiles:",
+      error
+    );
+
+    return {};
+
+  }
+
+
+  /*
+     Create a lookup object.
+
+     Example:
+
+     {
+       "uuid-here": "John Smith",
+       "another-uuid": "Jane Doe"
+     }
+  */
+
+  const memberNames = {};
+
+
+  (profiles || []).forEach(
+    function(profile) {
+
+      memberNames[profile.id] =
+        profile.full_name ||
+        "Unknown Member";
+
+    }
+  );
+
+
+  return memberNames;
+
+}
+
+
+
+/* =========================================
+   LOAD SERVICE-HOUR SUBMISSIONS
    ========================================= */
 
 async function loadSubmissions() {
@@ -538,6 +817,10 @@ async function loadSubmissions() {
     ).value;
 
 
+  /*
+     Get submissions.
+  */
+
   let query =
     supabaseClient
 
@@ -552,6 +835,10 @@ async function loadSubmissions() {
         }
       );
 
+
+  /*
+     Apply status filter.
+  */
 
   if (filter !== "all") {
 
@@ -571,6 +858,10 @@ async function loadSubmissions() {
     await query;
 
 
+  /*
+     Handle database errors.
+  */
+
   if (error) {
 
     console.error(error);
@@ -584,7 +875,9 @@ async function loadSubmissions() {
         </h3>
 
         <p>
-          ${escapeHtml(error.message)}
+          ${escapeHtml(
+            error.message
+          )}
         </p>
 
       </div>
@@ -596,10 +889,23 @@ async function loadSubmissions() {
   }
 
 
-  updateStats(data);
+  /*
+     Update dashboard statistics.
+  */
+
+  updateStats(
+    data || []
+  );
 
 
-  if (!data || data.length === 0) {
+  /*
+     No submissions.
+  */
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
 
     container.innerHTML = `
 
@@ -623,132 +929,258 @@ async function loadSubmissions() {
   }
 
 
+  /*
+     Get all member IDs.
+  */
+
+  const memberIds =
+    data.map(
+      function(item) {
+
+        return item.member_id;
+
+      }
+    );
+
+
+  /*
+     Get member names.
+  */
+
+  const memberNames =
+    await loadMemberProfiles(
+      memberIds
+    );
+
+
+  /*
+     Clear loading message.
+  */
+
   container.innerHTML = "";
 
 
-  data.forEach(function(item) {
+  /*
+     Create each submission card.
+  */
 
-    const card =
-      document.createElement("div");
-
-
-    card.className =
-      "admin-submission";
+  data.forEach(
+    function(item) {
 
 
-    card.innerHTML = `
+      const card =
+        document.createElement(
+          "div"
+        );
 
-      <div class="admin-submission-top">
 
-        <div>
+      card.className =
+        "admin-submission";
 
-          <span class="admin-status status-${item.status}">
-            ${escapeHtml(item.status)}
-          </span>
 
-          <h3>
-            ${escapeHtml(item.event_name)}
-          </h3>
+      /*
+         Find member name.
+
+         If the profile can't be found,
+         display Unknown Member instead
+         of the UUID.
+      */
+
+      const memberName =
+        memberNames[item.member_id] ||
+        "Unknown Member";
+
+
+      /*
+         Build card.
+      */
+
+      card.innerHTML = `
+
+        <div class="admin-submission-top">
+
+
+          <div>
+
+
+            <span
+              class="admin-status status-${escapeHtml(
+                item.status
+              )}">
+
+              ${escapeHtml(
+                item.status
+              )}
+
+            </span>
+
+
+            <h3>
+
+              ${escapeHtml(
+                item.event_name
+              )}
+
+            </h3>
+
+
+          </div>
+
+
+
+          <div class="admin-hours">
+
+            <strong>
+
+              ${escapeHtml(
+                String(item.hours)
+              )}
+
+            </strong>
+
+            <span>
+              hours
+            </span>
+
+          </div>
+
 
         </div>
 
 
-        <div class="admin-hours">
 
-          <strong>
-            ${item.hours}
-          </strong>
+        <div class="admin-details">
 
-          <span>
-            hours
-          </span>
+
+          <p>
+
+            <strong>
+              Date:
+            </strong>
+
+            ${escapeHtml(
+              item.service_date
+            )}
+
+          </p>
+
+
+
+          <p>
+
+            <strong>
+              Member:
+            </strong>
+
+            ${escapeHtml(
+              memberName
+            )}
+
+          </p>
+
+
+
+          <p>
+
+            <strong>
+              Description:
+            </strong>
+
+            ${escapeHtml(
+              item.description ||
+              "No description provided."
+            )}
+
+          </p>
+
 
         </div>
 
-      </div>
 
 
-      <div class="admin-details">
-
-        <p>
-          <strong>Date:</strong>
-          ${escapeHtml(item.service_date)}
-        </p>
-
-        <p>
-          <strong>Member ID:</strong>
-          ${escapeHtml(item.member_id)}
-        </p>
-
-        <p>
-          <strong>Description:</strong>
-          ${escapeHtml(
-            item.description ||
-            "No description provided."
-          )}
-        </p>
-
-      </div>
+        <div class="admin-review">
 
 
-      <div class="admin-review">
-
-        <label>
-          Review Note
-        </label>
-
-        <textarea
-          id="note-${item.id}"
-          placeholder="Optional note for the member...">${escapeHtml(
-            item.review_note || ""
-          )}</textarea>
+          <label>
+            Review Note
+          </label>
 
 
-        <div class="admin-actions">
-
-          <button
-            class="approve-button"
-            onclick="reviewSubmission('${item.id}', 'approved')">
-
-            ✓ Approve
-
-          </button>
+          <textarea
+            id="note-${escapeHtml(
+              item.id
+            )}"
+            placeholder="Optional note for the member...">${escapeHtml(
+              item.review_note || ""
+            )}</textarea>
 
 
-          <button
-            class="reject-button"
-            onclick="reviewSubmission('${item.id}', 'rejected')">
 
-            ✕ Reject
-
-          </button>
+          <div class="admin-actions">
 
 
-          <button
-            class="save-button"
-            onclick="saveNote('${item.id}')">
+            <button
+              type="button"
+              class="approve-button"
+              onclick="reviewSubmission(
+                '${escapeJs(item.id)}',
+                'approved'
+              )">
 
-            Save Note
+              ✓ Approve
 
-          </button>
+            </button>
+
+
+
+            <button
+              type="button"
+              class="reject-button"
+              onclick="reviewSubmission(
+                '${escapeJs(item.id)}',
+                'rejected'
+              )">
+
+              ✕ Reject
+
+            </button>
+
+
+
+            <button
+              type="button"
+              class="save-button"
+              onclick="saveNote(
+                '${escapeJs(item.id)}'
+              )">
+
+              Save Note
+
+            </button>
+
+
+          </div>
+
 
         </div>
 
-      </div>
-
-    `;
+      `;
 
 
-    container.appendChild(card);
+      container.appendChild(
+        card
+      );
 
-  });
+
+    }
+  );
 
 }
 
 
 
 /* =========================================
-   UPDATE SUMMARY
+   UPDATE ADMIN STATISTICS
    ========================================= */
 
 function updateStats(data) {
@@ -762,43 +1194,73 @@ function updateStats(data) {
   let hours = 0;
 
 
-  data.forEach(function(item) {
+  data.forEach(
+    function(item) {
 
-    hours += Number(item.hours);
+
+      hours +=
+        Number(item.hours) || 0;
 
 
-    if (item.status === "pending") {
-      pending++;
+      if (
+        item.status === "pending"
+      ) {
+
+        pending++;
+
+      }
+
+
+      if (
+        item.status === "approved"
+      ) {
+
+        approved++;
+
+      }
+
+
+      if (
+        item.status === "rejected"
+      ) {
+
+        rejected++;
+
+      }
+
+
     }
-
-    if (item.status === "approved") {
-      approved++;
-    }
-
-    if (item.status === "rejected") {
-      rejected++;
-    }
-
-  });
+  );
 
 
   document
-    .getElementById("pendingCount")
-    .textContent = pending;
+    .getElementById(
+      "pendingCount"
+    )
+    .textContent =
+      pending;
 
 
   document
-    .getElementById("approvedCount")
-    .textContent = approved;
+    .getElementById(
+      "approvedCount"
+    )
+    .textContent =
+      approved;
 
 
   document
-    .getElementById("rejectedCount")
-    .textContent = rejected;
+    .getElementById(
+      "rejectedCount"
+    )
+    .textContent =
+      rejected;
 
 
   document
-    .getElementById("totalHours")
+    .getElementById(
+      "totalHours"
+    )
     .textContent =
       hours.toFixed(2);
 
@@ -807,7 +1269,7 @@ function updateStats(data) {
 
 
 /* =========================================
-   APPROVE / REJECT
+   APPROVE / REJECT SUBMISSION
    ========================================= */
 
 async function reviewSubmission(
@@ -815,13 +1277,17 @@ async function reviewSubmission(
   status
 ) {
 
+
+  const noteElement =
+    document.getElementById(
+      "note-" + id
+    );
+
+
   const note =
-    document
-      .getElementById(
-        "note-" + id
-      )
-      .value
-      .trim();
+    noteElement
+      ? noteElement.value.trim()
+      : "";
 
 
   const {
@@ -852,6 +1318,8 @@ async function reviewSubmission(
 
   if (error) {
 
+    console.error(error);
+
     showMessage(
       "Error: " +
       error.message
@@ -862,11 +1330,21 @@ async function reviewSubmission(
   }
 
 
-  showMessage(
+  if (
     status === "approved"
-      ? "Service hours approved."
-      : "Service hours rejected."
-  );
+  ) {
+
+    showMessage(
+      "Service hours approved."
+    );
+
+  } else {
+
+    showMessage(
+      "Service hours rejected."
+    );
+
+  }
 
 
   await loadSubmissions();
@@ -876,18 +1354,31 @@ async function reviewSubmission(
 
 
 /* =========================================
-   SAVE NOTE
+   SAVE REVIEW NOTE
    ========================================= */
 
 async function saveNote(id) {
 
+
+  const noteElement =
+    document.getElementById(
+      "note-" + id
+    );
+
+
+  if (!noteElement) {
+
+    showMessage(
+      "Unable to find review note."
+    );
+
+    return;
+
+  }
+
+
   const note =
-    document
-      .getElementById(
-        "note-" + id
-      )
-      .value
-      .trim();
+    noteElement.value.trim();
 
 
   const {
@@ -915,6 +1406,8 @@ async function saveNote(id) {
 
   if (error) {
 
+    console.error(error);
+
     showMessage(
       "Error: " +
       error.message
@@ -933,256 +1426,606 @@ async function saveNote(id) {
 
 
 
-
 /* =========================================
-   EVENT MANAGEMENT
+   LOAD ADMIN EVENTS
    ========================================= */
 
 async function loadAdminEvents() {
 
-  const container = document.getElementById("adminEventsList");
 
-  if (!container) return;
+  const container =
+    document.getElementById(
+      "adminEventsList"
+    );
+
+
+  if (!container) {
+
+    return;
+
+  }
+
 
   container.innerHTML = `
+
     <p class="loading-text">
       Loading events...
     </p>
+
   `;
 
-  const { data: events, error } = await supabaseClient
-    .from("events")
-    .select("*")
-    .order("event_date", { ascending: true });
+
+  const {
+    data: events,
+    error
+  } =
+    await supabaseClient
+
+      .from("events")
+
+      .select("*")
+
+      .order(
+        "event_date",
+        {
+          ascending: true
+        }
+      );
+
 
   if (error) {
 
     console.error(error);
 
     container.innerHTML = `
+
       <div class="empty-hours">
-        <h3>Error loading events</h3>
-        <p>${escapeHtml(error.message)}</p>
+
+        <h3>
+          Error loading events
+        </h3>
+
+        <p>
+          ${escapeHtml(
+            error.message
+          )}
+        </p>
+
       </div>
+
     `;
 
     return;
+
   }
 
-  if (!events || events.length === 0) {
+
+  if (
+    !events ||
+    events.length === 0
+  ) {
 
     container.innerHTML = `
+
       <div class="empty-hours">
-        <h3>No events yet</h3>
-        <p>Create an event using the form above.</p>
+
+        <h3>
+          No events yet
+        </h3>
+
+        <p>
+          Create an event using the form above.
+        </p>
+
       </div>
+
     `;
 
     return;
+
   }
 
-  container.innerHTML = events.map(function(event) {
 
-    return `
-      <div class="admin-event-card">
+  container.innerHTML =
+    events.map(
+      function(event) {
 
-        <div class="admin-event-card-content">
 
-          <span class="admin-event-type">
-            ${escapeHtml(event.event_type || "NHS")}
-          </span>
+        return `
 
-          <h3>
-            ${escapeHtml(event.title)}
-          </h3>
+          <div class="admin-event-card">
 
-          <p>
-            ${escapeHtml(event.description || "No description provided.")}
-          </p>
 
-          <div class="admin-event-details">
+            <div class="admin-event-card-content">
 
-            <span>
-              📅 ${formatEventDate(event.event_date)}
-            </span>
 
-            <span>
-              🕐 ${escapeHtml(event.event_time || "Time TBD")}
-            </span>
+              <span class="admin-event-type">
 
-            <span>
-              📍 ${escapeHtml(event.location || "Location TBD")}
-            </span>
+                ${escapeHtml(
+                  event.event_type ||
+                  "NHS"
+                )}
+
+              </span>
+
+
+              <h3>
+
+                ${escapeHtml(
+                  event.title
+                )}
+
+              </h3>
+
+
+              <p>
+
+                ${escapeHtml(
+                  event.description ||
+                  "No description provided."
+                )}
+
+              </p>
+
+
+              <div class="admin-event-details">
+
+
+                <span>
+
+                  📅
+                  ${formatEventDate(
+                    event.event_date
+                  )}
+
+                </span>
+
+
+                <span>
+
+                  🕐
+                  ${escapeHtml(
+                    event.event_time ||
+                    "Time TBD"
+                  )}
+
+                </span>
+
+
+                <span>
+
+                  📍
+                  ${escapeHtml(
+                    event.location ||
+                    "Location TBD"
+                  )}
+
+                </span>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <button
+              type="button"
+              class="delete-event-button"
+              onclick="deleteEvent(
+                '${escapeJs(event.id)}'
+              )">
+
+              Delete
+
+            </button>
+
 
           </div>
 
-        </div>
+        `;
 
-        <button
-          type="button"
-          class="delete-event-button"
-          onclick="deleteEvent('${escapeJs(event.id)}')">
-          Delete
-        </button>
 
-      </div>
-    `;
-
-  }).join("");
+      }
+    ).join("");
 
 }
 
 
-document.getElementById("eventForm").addEventListener("submit", async function(event) {
 
-  event.preventDefault();
+/* =========================================
+   CREATE EVENT
+   ========================================= */
 
-  const button = document.getElementById("createEventButton");
-  const message = document.getElementById("eventMessage");
+document
+  .getElementById(
+    "eventForm"
+  )
+  .addEventListener(
+    "submit",
+    async function(event) {
 
-  button.disabled = true;
-  button.textContent = "Creating...";
-  message.textContent = "";
 
-  const {
-    data: { user }
-  } = await supabaseClient.auth.getUser();
+      event.preventDefault();
 
-  if (!user) {
 
-    message.textContent = "You must be logged in.";
+      const button =
+        document.getElementById(
+          "createEventButton"
+        );
 
-    button.disabled = false;
-    button.textContent = "+ Create Event";
 
-    return;
-  }
+      const message =
+        document.getElementById(
+          "eventMessage"
+        );
 
-  const title = document.getElementById("eventTitle").value.trim();
-  const eventType = document.getElementById("eventType").value;
-  const eventDate = document.getElementById("eventDate").value;
-  const eventTime = document.getElementById("eventTime").value.trim();
-  const location = document.getElementById("eventLocation").value.trim();
-  const description = document.getElementById("eventDescription").value.trim();
 
-  const { error } = await supabaseClient
-    .from("events")
-    .insert({
-      title: title,
-      event_type: eventType,
-      description: description,
-      event_date: eventDate,
-      event_time: eventTime,
-      location: location,
-      created_by: user.id
-    });
+      button.disabled =
+        true;
 
-  if (error) {
 
-    console.error(error);
+      button.textContent =
+        "Creating...";
 
-    message.textContent =
-      "Error creating event: " + error.message;
 
-    button.disabled = false;
-    button.textContent = "+ Create Event";
+      message.textContent =
+        "";
 
-    return;
-  }
 
-  message.textContent = "Event created successfully!";
 
-  document.getElementById("eventForm").reset();
+      /*
+         Verify logged-in user.
+      */
 
-  button.disabled = false;
-  button.textContent = "+ Create Event";
+      const {
+        data: {
+          user
+        }
+      } =
+        await supabaseClient.auth.getUser();
 
-  await loadAdminEvents();
 
-});
+      if (!user) {
 
+        message.textContent =
+          "You must be logged in.";
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "+ Create Event";
+
+
+        return;
+
+      }
+
+
+
+      /*
+         Get form values.
+      */
+
+      const title =
+        document
+          .getElementById(
+            "eventTitle"
+          )
+          .value
+          .trim();
+
+
+      const eventType =
+        document
+          .getElementById(
+            "eventType"
+          )
+          .value;
+
+
+      const eventDate =
+        document
+          .getElementById(
+            "eventDate"
+          )
+          .value;
+
+
+      const eventTime =
+        document
+          .getElementById(
+            "eventTime"
+          )
+          .value
+          .trim();
+
+
+      const location =
+        document
+          .getElementById(
+            "eventLocation"
+          )
+          .value
+          .trim();
+
+
+      const description =
+        document
+          .getElementById(
+            "eventDescription"
+          )
+          .value
+          .trim();
+
+
+
+      /*
+         Insert event.
+      */
+
+      const {
+        error
+      } =
+        await supabaseClient
+
+          .from("events")
+
+          .insert({
+
+            title:
+              title,
+
+            event_type:
+              eventType,
+
+            description:
+              description,
+
+            event_date:
+              eventDate,
+
+            event_time:
+              eventTime,
+
+            location:
+              location,
+
+            created_by:
+              user.id
+
+          });
+
+
+      if (error) {
+
+        console.error(error);
+
+
+        message.textContent =
+          "Error creating event: " +
+          error.message;
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "+ Create Event";
+
+
+        return;
+
+      }
+
+
+      /*
+         Success.
+      */
+
+      message.textContent =
+        "Event created successfully!";
+
+
+      document
+        .getElementById(
+          "eventForm"
+        )
+        .reset();
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "+ Create Event";
+
+
+      await loadAdminEvents();
+
+
+      setTimeout(
+        function() {
+
+          message.textContent =
+            "";
+
+        },
+        4000
+      );
+
+
+    }
+  );
+
+
+
+/* =========================================
+   DELETE EVENT
+   ========================================= */
 
 async function deleteEvent(id) {
 
-  const confirmed = window.confirm(
-    "Are you sure you want to delete this event?"
-  );
 
-  if (!confirmed) return;
+  const confirmed =
+    window.confirm(
+      "Are you sure you want to delete this event?"
+    );
 
-  const { error } = await supabaseClient
-    .from("events")
-    .delete()
-    .eq("id", id);
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+
+      .from("events")
+
+      .delete()
+
+      .eq(
+        "id",
+        id
+      );
+
 
   if (error) {
 
     console.error(error);
 
     showEventMessage(
-      "Unable to delete event: " + error.message
+      "Unable to delete event: " +
+      error.message
     );
 
     return;
+
   }
 
-  showEventMessage("Event deleted.");
+
+  showEventMessage(
+    "Event deleted."
+  );
+
 
   await loadAdminEvents();
+
 }
 
-
-function formatEventDate(date) {
-
-  if (!date) return "Date TBD";
-
-  const d = new Date(date + "T00:00:00");
-
-  if (Number.isNaN(d.getTime())) {
-    return date;
-  }
-
-  return d.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  });
-}
-
-
-function showEventMessage(message) {
-
-  const box = document.getElementById("eventMessage");
-
-  if (!box) return;
-
-  box.textContent = message;
-
-  setTimeout(function() {
-    box.textContent = "";
-  }, 4000);
-}
-
-
-function escapeJs(text) {
-
-  if (text === null || text === undefined) {
-    return "";
-  }
-
-  return String(text)
-    .replace(/\\/g, "\\\\")
-    .replace(/'/g, "\\'")
-    .replace(/\r/g, "\\r")
-    .replace(/\n/g, "\\n");
-}
 
 
 /* =========================================
-   MESSAGE
+   FORMAT EVENT DATE
    ========================================= */
 
-function showMessage(message) {
+function formatEventDate(date) {
+
+
+  if (!date) {
+
+    return "Date TBD";
+
+  }
+
+
+  const d =
+    new Date(
+      date +
+      "T00:00:00"
+    );
+
+
+  if (
+    Number.isNaN(
+      d.getTime()
+    )
+  ) {
+
+    return date;
+
+  }
+
+
+  return d.toLocaleDateString(
+    "en-US",
+    {
+
+      month:
+        "long",
+
+      day:
+        "numeric",
+
+      year:
+        "numeric"
+
+    }
+  );
+
+}
+
+
+
+/* =========================================
+   EVENT MESSAGE
+   ========================================= */
+
+function showEventMessage(
+  message
+) {
+
+
+  const box =
+    document.getElementById(
+      "eventMessage"
+    );
+
+
+  if (!box) {
+
+    return;
+
+  }
+
+
+  box.textContent =
+    message;
+
+
+  setTimeout(
+    function() {
+
+      box.textContent =
+        "";
+
+    },
+    4000
+  );
+
+}
+
+
+
+/* =========================================
+   ADMIN MESSAGE
+   ========================================= */
+
+function showMessage(
+  message
+) {
+
 
   const box =
     document.getElementById(
@@ -1190,15 +2033,69 @@ function showMessage(message) {
     );
 
 
+  if (!box) {
+
+    return;
+
+  }
+
+
   box.textContent =
     message;
 
 
-  setTimeout(function() {
+  setTimeout(
+    function() {
 
-    box.textContent = "";
+      box.textContent =
+        "";
 
-  }, 4000);
+    },
+    4000
+  );
+
+}
+
+
+
+/* =========================================
+   JAVASCRIPT ESCAPING
+   ========================================= */
+
+function escapeJs(text) {
+
+
+  if (
+    text === null ||
+    text === undefined
+  ) {
+
+    return "";
+
+  }
+
+
+  return String(text)
+
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+
+    .replace(
+      /'/g,
+      "\\'"
+    )
+
+    .replace(
+      /\r/g,
+      "\\r"
+    )
+
+    .replace(
+      /\n/g,
+      "\\n"
+    );
 
 }
 
@@ -1210,11 +2107,26 @@ function showMessage(message) {
 
 function escapeHtml(text) {
 
+
+  if (
+    text === null ||
+    text === undefined
+  ) {
+
+    return "";
+
+  }
+
+
   const div =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   div.textContent =
-    text;
+    String(text);
+
 
   return div.innerHTML;
 
@@ -1228,7 +2140,11 @@ function escapeHtml(text) {
 
 async function logout() {
 
-  await supabaseClient.auth.signOut();
+
+  await supabaseClient
+    .auth
+    .signOut();
+
 
   window.location.href =
     "login.html";
@@ -1243,19 +2159,24 @@ async function logout() {
 
 function toggleMenu() {
 
+
   document
-    .getElementById("mainNav")
-    .classList.toggle("open");
+    .getElementById(
+      "mainNav"
+    )
+    .classList
+    .toggle("open");
 
 }
 
 
 
 /* =========================================
-   START
+   START ADMIN DASHBOARD
    ========================================= */
 
 checkAdmin();
+
 
 </script>
 
