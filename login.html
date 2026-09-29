@@ -1,7 +1,6 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,102 +10,394 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    /* ================================
+       LOGIN PAGE
+    ================================= */
+
     .login-page {
       min-height: calc(100vh - 80px);
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      padding: 80px 20px;
+      padding: 70px 20px 90px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .login-card {
+    .login-page::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(245, 197, 66, 0.06);
+      border-radius: 50%;
+      top: -250px;
+      left: -180px;
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .login-page::after {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: rgba(245, 197, 66, 0.04);
+      border-radius: 50%;
+      bottom: -250px;
+      right: -180px;
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .login-wrapper {
       width: 100%;
-      max-width: 650px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 32px 32px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+      max-width: 1050px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 25px;
+      position: relative;
+      z-index: 1;
     }
 
-    .login-card h2 {
-      margin-top: 0;
+    /* LEFT INFORMATION PANEL */
+
+    .login-info {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(245, 197, 66, 0.13),
+          rgba(245, 197, 66, 0.03)
+        );
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 45px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 500px;
+    }
+
+    .login-symbol {
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 35px rgba(245, 197, 66, 0.15);
+    }
+
+    .login-info .eyebrow {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
       margin-bottom: 12px;
+    }
+
+    .login-info h2 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      color: var(--white);
+    }
+
+    .login-info h2 span {
       color: var(--gold);
     }
 
-    .login-description {
+    .login-info p {
       color: var(--muted);
-      margin-bottom: 28px;
+      line-height: 1.7;
+      margin: 0;
     }
+
+    .login-benefits {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .login-benefit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-size: .95rem;
+    }
+
+    .benefit-icon {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(245, 197, 66, 0.12);
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    /* LOGIN CARD */
+
+    .login-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 42px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .38);
+    }
+
+    .login-card-header {
+      margin-bottom: 30px;
+    }
+
+    .login-card-header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      color: var(--white);
+    }
+
+    .login-card-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* FORM */
 
     .login-form {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 19px;
     }
 
-    .login-form label {
-      font-weight: 700;
-      margin-bottom: -10px;
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .login-form input {
+    .field-group label {
+      font-size: .88rem;
+      font-weight: 750;
+      color: var(--white);
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
       width: 100%;
       box-sizing: border-box;
+      min-height: 50px;
+      padding: 13px 15px;
+      padding-right: 52px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--white);
+      outline: none;
+      transition: border-color .2s ease,
+                  box-shadow .2s ease,
+                  background .2s ease;
+    }
+
+    .input-wrapper input::placeholder {
+      color: var(--muted-2);
+    }
+
+    .input-wrapper input:focus {
+      border-color: var(--gold);
+      background: #1b1b1b;
+      box-shadow: 0 0 0 3px rgba(245, 197, 66, .10);
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .password-toggle:hover {
+      background: rgba(255,255,255,.06);
+      color: var(--gold);
     }
 
     .login-button {
-      width: fit-content;
-      margin-top: 2px;
+      width: 100%;
+      min-height: 52px;
+      margin-top: 5px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
     }
+
+    .login-button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    /* MESSAGE */
 
     .login-message {
       display: none;
       margin-top: 18px;
-      padding: 12px 14px;
+      padding: 13px 15px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 100, 100, .3);
-      color: #ffb4b4;
+      border: 1px solid rgba(255, 100, 100, .30);
+      color: #ffbcbc;
       background: rgba(255, 80, 80, .08);
+      line-height: 1.5;
+      font-size: .92rem;
     }
 
-    .login-help {
-      margin-top: 20px;
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
+    .login-message.success {
+      color: #b9f5c5;
+      border-color: rgba(90, 220, 120, .30);
+      background: rgba(70, 210, 100, .08);
+    }
+
+    /* DIVIDER */
+
+    .login-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 27px 0;
+      color: var(--muted-2);
+      font-size: .8rem;
+    }
+
+    .login-divider::before,
+    .login-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    /* CREATE ACCOUNT */
+
+    .create-account {
+      text-align: center;
+    }
+
+    .create-account p {
+      margin: 0 0 12px;
       color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .create-account a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--gold-border);
+      border-radius: 9px;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 750;
+      transition: background .2s ease,
+                  border-color .2s ease,
+                  transform .2s ease;
+    }
+
+    .create-account a:hover {
+      background: rgba(245, 197, 66, .08);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* HELP */
+
+    .login-help {
+      margin-top: 25px;
+      padding: 15px 16px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.6;
+      text-align: center;
     }
 
     .login-help strong {
-      color: var(--gold);
-    }
-
-    .login-help a {
-      color: var(--gold);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .login-help a:hover {
-      color: var(--gold-bright);
-      text-decoration: underline;
+      color: var(--white);
     }
 
     .login-note {
-      margin-top: 12px;
-      font-size: .9rem;
+      margin: 18px 0 0;
       color: var(--muted-2);
+      font-size: .78rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .login-note strong {
+      color: var(--gold);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .login-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 650px;
+      }
+
+      .login-info {
+        min-height: auto;
+        padding: 32px;
+      }
+
+      .login-benefits {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 600px) {
       .login-page {
-        padding: 50px 16px;
+        padding: 40px 15px 60px;
+      }
+
+      .login-info {
+        padding: 28px 24px;
       }
 
       .login-card {
-        padding: 30px 20px 24px;
+        padding: 28px 22px;
+      }
+
+      .login-info h2 {
+        font-size: 2rem;
+      }
+
+      .login-benefits {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -114,90 +405,164 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
+<header class="site-header">
+  <div class="container nav-container">
 
-    <div class="container nav-container">
+    <a href="index.html" class="logo">
+      AHS <span>NHS</span>
+    </a>
 
-      <a href="index.html" class="logo">
-        AHS <span>NHS</span>
-      </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="service.html">Service</a>
+      <a href="resources.html">Resources</a>
+      <a href="login.html" class="active">Member Login</a>
+    </nav>
 
-      <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="service.html">Service</a>
-        <a href="resources.html">Resources</a>
-        <a href="login.html" class="active">Member Login</a>
-      </nav>
-
-    </div>
-
-  </header>
+  </div>
+</header>
 
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
+<section class="page-hero">
+  <div class="container">
 
-    <div class="container">
+    <div class="eyebrow">MEMBER AREA</div>
 
-      <div class="eyebrow">
-        MEMBER AREA
+    <h1>
+      Member <span>Login</span>
+    </h1>
+
+    <p>
+      Access your Alamogordo High School NHS member dashboard.
+    </p>
+
+  </div>
+</section>
+
+
+<main class="login-page">
+
+  <div class="login-wrapper">
+
+    <!-- LEFT SIDE -->
+
+    <section class="login-info">
+
+      <div class="login-symbol">
+        ✦
       </div>
 
-      <h1>
-        Member <span>Login</span>
-      </h1>
+      <div class="eyebrow">
+        AHS NATIONAL HONOR SOCIETY
+      </div>
+
+      <h2>
+        Welcome<br>
+        <span>Back.</span>
+      </h2>
 
       <p>
-        Sign in to access your NHS member dashboard.
+        Sign in to access member resources, service hours,
+        announcements, events, and other NHS information.
       </p>
 
-    </div>
+      <div class="login-benefits">
 
-  </section>
+        <div class="login-benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Track service hours</span>
+        </div>
+
+        <div class="login-benefit">
+          <div class="benefit-icon">✓</div>
+          <span>View member information</span>
+        </div>
+
+        <div class="login-benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Access NHS resources</span>
+        </div>
+
+        <div class="login-benefit">
+          <div class="benefit-icon">✓</div>
+          <span>Stay updated on events</span>
+        </div>
+
+      </div>
+
+    </section>
 
 
-  <!-- LOGIN -->
-  <main class="login-page">
+    <!-- LOGIN FORM -->
 
-    <div class="login-card">
+    <section class="login-card">
 
-      <h2>Member Sign In</h2>
+      <div class="login-card-header">
 
-      <p class="login-description">
-        Use the email address and password associated with your NHS account.
-      </p>
+        <h1>Sign In</h1>
+
+        <p>
+          Enter your school account information below.
+        </p>
+
+      </div>
 
 
       <form id="loginForm" class="login-form">
 
-        <label for="email">
-          School Email
-        </label>
+        <div class="field-group">
 
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="you@alamogordoschools.org"
-          autocomplete="email"
-          required
-        >
+          <label for="email">
+            School Email
+          </label>
+
+          <div class="input-wrapper">
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@alamogordoschools.org"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+        </div>
 
 
-        <label for="password">
-          Password
-        </label>
+        <div class="field-group">
 
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          autocomplete="current-password"
-          required
-        >
+          <label for="password">
+            Password
+          </label>
+
+          <div class="input-wrapper">
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="passwordToggle"
+              aria-label="Show password"
+              title="Show password"
+            >
+              👁
+            </button>
+
+          </div>
+
+        </div>
 
 
         <button
@@ -211,172 +576,285 @@
       </form>
 
 
-      <!-- ERROR / STATUS MESSAGE -->
       <div
         id="loginMessage"
-        class="login-message">
+        class="login-message"
+        role="alert"
+      ></div>
+
+
+      <div class="login-divider">
+        OR
       </div>
 
 
-      <!-- ACCOUNT HELP -->
-      <div class="login-help">
+      <div class="create-account">
 
-        <strong>Don't have an account?</strong>
-
-        <br>
+        <p>
+          Don't have an NHS member account yet?
+        </p>
 
         <a href="signup.html">
-          Create an NHS Member Account
+          Create Member Account
         </a>
 
-        <br><br>
+      </div>
 
-        <strong>Having trouble?</strong>
+
+      <div class="login-help">
+
+        <strong>Having trouble signing in?</strong>
 
         <br>
 
-        Contact the NHS advisor if you need help accessing your account.
+        Make sure you are using your
+        <strong>@alamogordoschools.org</strong>
+        school email and the correct password.
 
       </div>
 
 
       <p class="login-note">
-        NHS member accounts must use an
-        <strong>@alamogordoschools.org</strong>
-        school email address.
+
+        NHS member accounts are restricted to
+        <strong>Alamogordo Schools</strong>
+        email addresses.
+
       </p>
 
-    </div>
+    </section>
 
-  </main>
+  </div>
 
-
-  <!-- SUPABASE -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-
-    const SUPABASE_URL =
-      "https://biysmsrusfnjjadtvhxj.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
-
-    const supabaseClient =
-      supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+</main>
 
 
-    const loginForm =
-      document.getElementById("loginForm");
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    const loginMessage =
-      document.getElementById("loginMessage");
+<script>
 
-    const loginButton =
-      document.getElementById("loginButton");
+  /* =================================
+     SUPABASE
+  ================================= */
 
+  const SUPABASE_URL =
+    "https://biysmsrusfnjjadtvhxj.supabase.co";
 
-    function showMessage(message) {
+  const SUPABASE_KEY =
+    "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
 
-      loginMessage.textContent = message;
-      loginMessage.style.display = "block";
-
-    }
-
-
-    loginForm.addEventListener(
-      "submit",
-      async function (event) {
-
-        event.preventDefault();
-
-        loginMessage.style.display = "none";
-
-        const email =
-          document
-            .getElementById("email")
-            .value
-            .trim()
-            .toLowerCase();
-
-        const password =
-          document
-            .getElementById("password")
-            .value;
-
-
-        /*
-          Make sure the user is using an
-          Alamogordo Schools email address.
-        */
-
-        if (
-          !email.endsWith(
-            "@alamogordoschools.org"
-          )
-        ) {
-
-          showMessage(
-            "Please use your Alamogordo Schools email address ending in @alamogordoschools.org."
-          );
-
-          return;
-
-        }
-
-
-        loginButton.disabled = true;
-        loginButton.textContent = "Signing In...";
-
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient.auth.signInWithPassword({
-
-            email: email,
-
-            password: password
-
-          });
-
-
-        if (error) {
-
-          console.error(error);
-
-          showMessage(
-            "Unable to sign in. Please check your school email and password."
-          );
-
-          loginButton.disabled = false;
-          loginButton.textContent = "Sign In";
-
-          return;
-
-        }
-
-
-        /*
-          Successful login.
-          Send the member to the dashboard.
-        */
-
-        window.location.href =
-          "member.html";
-
-      }
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
     );
 
 
-  </script>
+  /* =================================
+     ELEMENTS
+  ================================= */
+
+  const loginForm =
+    document.getElementById("loginForm");
+
+  const loginMessage =
+    document.getElementById("loginMessage");
+
+  const loginButton =
+    document.getElementById("loginButton");
+
+  const passwordInput =
+    document.getElementById("password");
+
+  const passwordToggle =
+    document.getElementById("passwordToggle");
+
+
+  /* =================================
+     PASSWORD VISIBILITY
+  ================================= */
+
+  passwordToggle.addEventListener(
+    "click",
+    function () {
+
+      const showing =
+        passwordInput.type === "text";
+
+      if (showing) {
+
+        passwordInput.type = "password";
+
+        passwordToggle.textContent = "👁";
+
+        passwordToggle.setAttribute(
+          "aria-label",
+          "Show password"
+        );
+
+        passwordToggle.setAttribute(
+          "title",
+          "Show password"
+        );
+
+      } else {
+
+        passwordInput.type = "text";
+
+        passwordToggle.textContent = "🙈";
+
+        passwordToggle.setAttribute(
+          "aria-label",
+          "Hide password"
+        );
+
+        passwordToggle.setAttribute(
+          "title",
+          "Hide password"
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =================================
+     MESSAGE
+  ================================= */
+
+  function showMessage(
+    message,
+    success = false
+  ) {
+
+    loginMessage.textContent = message;
+
+    loginMessage.classList.toggle(
+      "success",
+      success
+    );
+
+    loginMessage.style.display = "block";
+
+  }
+
+
+  /* =================================
+     LOGIN
+  ================================= */
+
+  loginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+      event.preventDefault();
+
+      loginMessage.style.display = "none";
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim()
+          .toLowerCase();
+
+      const password =
+        passwordInput.value;
+
+
+      /* SCHOOL EMAIL CHECK */
+
+      if (
+        !email.endsWith(
+          "@alamogordoschools.org"
+        )
+      ) {
+
+        showMessage(
+          "Please use your Alamogordo Schools email address ending in @alamogordoschools.org."
+        );
+
+        return;
+
+      }
+
+
+      /* DISABLE BUTTON */
+
+      loginButton.disabled = true;
+
+      loginButton.textContent =
+        "Signing In...";
+
+
+      /* SUPABASE LOGIN */
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email: email,
+
+          password: password
+
+        });
+
+
+      /* ERROR */
+
+      if (error) {
+
+        console.error(
+          "Login error:",
+          error
+        );
+
+        showMessage(
+          "Unable to sign in. Please check your school email and password."
+        );
+
+        loginButton.disabled = false;
+
+        loginButton.textContent =
+          "Sign In";
+
+        return;
+
+      }
+
+
+      /* SUCCESS */
+
+      showMessage(
+        "Login successful. Opening your member dashboard...",
+        true
+      );
+
+
+      /*
+        Give the success message a moment
+        to appear before redirecting.
+      */
+
+      setTimeout(
+        function () {
+
+          window.location.href =
+            "member.html";
+
+        },
+        500
+      );
+
+    }
+  );
+
+</script>
 
 </body>
-
 </html>
 ```
 
