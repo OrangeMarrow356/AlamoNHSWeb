@@ -1,51 +1,106 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Alamogordo High School National Honor Society</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
 
 <header class="site-header">
 
   <div class="nav-container">
 
-    <a href="index.html" class="brand">
+    <a
+      href="index.html"
+      class="brand"
+    >
 
       <div class="brand-shield">
         NHS
       </div>
 
       <div class="brand-text">
-        <strong>ALAMOGORDO HIGH SCHOOL</strong>
-        <span>National Honor Society</span>
+
+        <strong>
+          ALAMOGORDO HIGH SCHOOL
+        </strong>
+
+        <span>
+          National Honor Society
+        </span>
+
       </div>
 
     </a>
 
+
     <button
       class="menu-toggle"
       onclick="toggleMenu()"
-      aria-label="Open menu">
+      aria-label="Open menu"
+    >
       ☰
     </button>
 
+
     <nav id="mainNav">
 
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="events.html">Events</a>
-      <a href="service.html">Service</a>
-      <a href="resources.html">Resources</a>
-      <a href="announcements.html">Announcements</a>
-      <a href="member.html">Member Login</a>
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="leadership.html">
+        Leadership
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="resources.html">
+        Resources
+      </a>
+
+      <a href="announcements.html">
+        Announcements
+      </a>
+
+      <a href="member.html">
+        Member Login
+      </a>
 
     </nav>
 
@@ -54,7 +109,10 @@
 </header>
 
 
-<!-- HERO -->
+
+<!-- =========================================
+     HERO
+     ========================================= -->
 
 <section class="hero">
 
@@ -74,11 +132,17 @@
 
     <div class="hero-buttons">
 
-      <a href="about.html" class="button">
+      <a
+        href="about.html"
+        class="button"
+      >
         Learn More →
       </a>
 
-      <a href="events.html" class="button button-outline">
+      <a
+        href="events.html"
+        class="button button-outline"
+      >
         View Events →
       </a>
 
@@ -89,13 +153,17 @@
 </section>
 
 
-<!-- ANNOUNCEMENTS -->
+
+<!-- =========================================
+     ANNOUNCEMENTS
+     ========================================= -->
 
 <section class="dashboard-section">
 
   <div class="section-heading">
 
     <div>
+
       <p class="eyebrow">
         KEEP UP WITH NHS
       </p>
@@ -103,9 +171,13 @@
       <h2>
         Latest Announcements
       </h2>
+
     </div>
 
-    <a href="announcements.html" class="text-link">
+    <a
+      href="announcements.html"
+      class="text-link"
+    >
       View All →
     </a>
 
@@ -183,7 +255,10 @@
 </section>
 
 
-<!-- EVENTS -->
+
+<!-- =========================================
+     EVENTS
+     ========================================= -->
 
 <section class="dashboard-section dark-section">
 
@@ -201,53 +276,22 @@
 
     </div>
 
-    <a href="events.html" class="text-link">
+    <a
+      href="events.html"
+      class="text-link"
+    >
       View Full Calendar →
     </a>
 
   </div>
 
 
-  <div class="event-grid">
+  <!-- Events are loaded from Supabase -->
 
-
-    <article class="event-card">
-
-      <div class="event-date">
-
-        <strong>
-          —
-        </strong>
-
-        <span>
-          DATE
-        </span>
-
-      </div>
-
-
-      <div class="event-info">
-
-        <h3>
-          NHS Meeting
-        </h3>
-
-        <p>
-          AHS
-        </p>
-
-        <p>
-          Time TBD
-        </p>
-
-        <a href="events.html">
-          View Details →
-        </a>
-
-      </div>
-
-    </article>
-
+  <div
+    class="event-grid"
+    id="upcomingEvents"
+  >
 
     <article class="event-card">
 
@@ -258,7 +302,7 @@
         </strong>
 
         <span>
-          DATE
+          LOADING
         </span>
 
       </div>
@@ -267,70 +311,26 @@
       <div class="event-info">
 
         <h3>
-          Service Event
+          Loading events...
         </h3>
 
         <p>
-          Location TBD
+          Please wait while we load upcoming NHS events.
         </p>
-
-        <p>
-          Time TBD
-        </p>
-
-        <a href="service.html">
-          Sign Up →
-        </a>
 
       </div>
 
     </article>
-
-
-    <article class="event-card">
-
-      <div class="event-date">
-
-        <strong>
-          —
-        </strong>
-
-        <span>
-          DATE
-        </span>
-
-      </div>
-
-
-      <div class="event-info">
-
-        <h3>
-          Community Event
-        </h3>
-
-        <p>
-          Location TBD
-        </p>
-
-        <p>
-          Time TBD
-        </p>
-
-        <a href="events.html">
-          View Details →
-        </a>
-
-      </div>
-
-    </article>
-
 
   </div>
 
 </section>
 
 
-<!-- QUICK LINKS -->
+
+<!-- =========================================
+     QUICK LINKS
+     ========================================= -->
 
 <section class="dashboard-section">
 
@@ -444,7 +444,10 @@
 </section>
 
 
-<!-- FOUR PILLARS -->
+
+<!-- =========================================
+     FOUR PILLARS
+     ========================================= -->
 
 <section class="pillars-section">
 
@@ -542,7 +545,10 @@
 </section>
 
 
-<!-- CALL TO ACTION -->
+
+<!-- =========================================
+     CALL TO ACTION
+     ========================================= -->
 
 <section class="cta-section">
 
@@ -564,14 +570,20 @@
   </div>
 
 
-  <a href="service.html" class="button">
+  <a
+    href="service.html"
+    class="button"
+  >
     Find Service Opportunities →
   </a>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
 
 <footer class="site-footer">
 
@@ -633,21 +645,405 @@
 </footer>
 
 
+
+<!-- =========================================
+     SCRIPTS
+     ========================================= -->
+
 <script src="js/script.js"></script>
 
+
 <script>
+
+/* =========================================
+   SUPABASE
+   ========================================= */
+
+const SUPABASE_URL =
+  "https://biysmsrusfnjjadtvhxj.supabase.co";
+
+
+const SUPABASE_KEY =
+  "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+
+/* =========================================
+   ESCAPE HTML
+   Prevents event information from being
+   interpreted as HTML.
+   ========================================= */
+
+function escapeHtml(value) {
+
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================================
+   FORMAT DATE
+   ========================================= */
+
+function formatEventDate(dateString) {
+
+  const date =
+    new Date(
+      dateString + "T00:00:00"
+    );
+
+
+  const day =
+    date.getDate();
+
+
+  const month =
+    date.toLocaleDateString(
+      "en-US",
+      {
+        month: "short"
+      }
+    );
+
+
+  return {
+    day: day,
+    month: month
+  };
+
+}
+
+
+
+/* =========================================
+   FORMAT TIME
+   ========================================= */
+
+function formatEventTime(time) {
+
+  if (!time) {
+    return "Time TBD";
+  }
+
+  /*
+   * If the admin entered something like
+   * "1:00 PM", display it as-is.
+   */
+
+  return time;
+
+}
+
+
+
+/* =========================================
+   LOAD UPCOMING EVENTS
+   ========================================= */
+
+async function loadUpcomingEvents() {
+
+  const container =
+    document.getElementById(
+      "upcomingEvents"
+    );
+
+
+  /*
+   * Get today's date in YYYY-MM-DD format.
+   */
+
+  const today =
+    new Date()
+      .toISOString()
+      .split("T")[0];
+
+
+  /*
+   * Get the next upcoming events.
+   *
+   * We load up to 3 events so the
+   * homepage stays compact.
+   */
+
+  const {
+    data: events,
+    error
+  } =
+    await supabaseClient
+
+      .from("events")
+
+      .select("*")
+
+      .gte(
+        "event_date",
+        today
+      )
+
+      .order(
+        "event_date",
+        {
+          ascending: true
+        }
+      )
+
+      .limit(3);
+
+
+
+  /*
+   * Handle database error.
+   */
+
+  if (error) {
+
+    console.error(
+      "Error loading events:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <article class="event-card">
+
+        <div class="event-date">
+
+          <strong>
+            !
+          </strong>
+
+          <span>
+            ERROR
+          </span>
+
+        </div>
+
+
+        <div class="event-info">
+
+          <h3>
+            Events unavailable
+          </h3>
+
+          <p>
+            Please visit the Events page.
+          </p>
+
+          <a href="events.html">
+            View Events →
+          </a>
+
+        </div>
+
+      </article>
+
+    `;
+
+    return;
+
+  }
+
+
+
+  /*
+   * No upcoming events.
+   */
+
+  if (!events || events.length === 0) {
+
+    container.innerHTML = `
+
+      <article class="event-card">
+
+        <div class="event-date">
+
+          <strong>
+            —
+          </strong>
+
+          <span>
+            EVENTS
+          </span>
+
+        </div>
+
+
+        <div class="event-info">
+
+          <h3>
+            No upcoming events
+          </h3>
+
+          <p>
+            Check back soon for upcoming NHS activities.
+          </p>
+
+          <a href="events.html">
+            View Full Calendar →
+          </a>
+
+        </div>
+
+      </article>
+
+    `;
+
+    return;
+
+  }
+
+
+
+  /*
+   * Create the event cards.
+   */
+
+  container.innerHTML =
+    events.map(
+      function(event) {
+
+        const date =
+          formatEventDate(
+            event.event_date
+          );
+
+
+        const title =
+          escapeHtml(
+            event.title
+          );
+
+
+        const type =
+          escapeHtml(
+            event.event_type ||
+            "NHS"
+          );
+
+
+        const description =
+          escapeHtml(
+            event.description ||
+            "NHS event"
+          );
+
+
+        const location =
+          escapeHtml(
+            event.location ||
+            "Location TBD"
+          );
+
+
+        const time =
+          escapeHtml(
+            formatEventTime(
+              event.event_time
+            )
+          );
+
+
+        return `
+
+          <article class="event-card">
+
+            <div class="event-date">
+
+              <strong>
+                ${date.day}
+              </strong>
+
+              <span>
+                ${date.month}
+              </span>
+
+            </div>
+
+
+            <div class="event-info">
+
+              <h3>
+                ${title}
+              </h3>
+
+              <p>
+                ${description}
+              </p>
+
+              <p>
+                ${location}
+              </p>
+
+              <p>
+                ${time}
+              </p>
+
+              <a href="events.html">
+                View Details →
+              </a>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
 
 function toggleMenu() {
 
   const nav =
-    document.getElementById("mainNav");
+    document.getElementById(
+      "mainNav"
+    );
 
-  nav.classList.toggle("open");
+
+  nav.classList.toggle(
+    "open"
+  );
 
 }
 
+
+
+/* =========================================
+   START
+   ========================================= */
+
+loadUpcomingEvents();
+
 </script>
+
 
 </body>
 
 </html>
+```
