@@ -1,220 +1,382 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Member Login | AHS NHS</title>
+  <title>Member Login | Alamogordo High School National Honor Society</title>
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    .login-page {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 650px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 32px 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+    }
+
+    .login-card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+
+    .login-description {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .login-form label {
+      font-weight: 700;
+      margin-bottom: -10px;
+    }
+
+    .login-form input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .login-button {
+      width: fit-content;
+      margin-top: 2px;
+    }
+
+    .login-message {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 100, 100, .3);
+      color: #ffb4b4;
+      background: rgba(255, 80, 80, .08);
+    }
+
+    .login-help {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+    }
+
+    .login-help strong {
+      color: var(--gold);
+    }
+
+    .login-help a {
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .login-help a:hover {
+      color: var(--gold-bright);
+      text-decoration: underline;
+    }
+
+    .login-note {
+      margin-top: 12px;
+      font-size: .9rem;
+      color: var(--muted-2);
+    }
+
+    @media (max-width: 600px) {
+      .login-page {
+        padding: 50px 16px;
+      }
+
+      .login-card {
+        padding: 30px 20px 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="nav-container">
+  <!-- HEADER -->
+  <header class="site-header">
 
-    <a href="index.html" class="brand">
-      <div class="brand-shield">NHS</div>
+    <div class="container nav-container">
 
-      <div class="brand-text">
-        <strong>ALAMOGORDO HIGH SCHOOL</strong>
-        <span>National Honor Society</span>
+      <a href="index.html" class="logo">
+        AHS <span>NHS</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="service.html">Service</a>
+        <a href="resources.html">Resources</a>
+        <a href="login.html" class="active">Member Login</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        MEMBER AREA
       </div>
-    </a>
 
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <h1>
+        Member <span>Login</span>
+      </h1>
 
-    <nav id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="events.html">Events</a>
-      <a href="service.html">Service</a>
-      <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html" class="active">Member Login</a>
-    </nav>
+      <p>
+        Sign in to access your NHS member dashboard.
+      </p>
 
-  </div>
-</header>
+    </div>
+
+  </section>
 
 
-<section class="page-hero">
-  <div class="page-hero-inner">
+  <!-- LOGIN -->
+  <main class="login-page">
 
-    <p class="eyebrow">MEMBER AREA</p>
+    <div class="login-card">
 
-    <h1>
-      Member <span>Login</span>
-    </h1>
+      <h2>Member Sign In</h2>
 
-    <p>
-      Sign in to access your NHS member dashboard.
-    </p>
-
-  </div>
-</section>
+      <p class="login-description">
+        Use the email address and password associated with your NHS account.
+      </p>
 
 
-<section class="content-section">
+      <form id="loginForm" class="login-form">
 
-  <div class="form-card">
-
-    <h2>Member Sign In</h2>
-
-    <p class="form-note">
-      Use the email address and password associated with your NHS account.
-    </p>
-
-    <form id="loginForm">
-
-      <div class="form-group">
-        <label for="email">School Email</label>
+        <label for="email">
+          School Email
+        </label>
 
         <input
           type="email"
           id="email"
-          placeholder="you@school.edu"
+          name="email"
+          placeholder="you@alamogordoschools.org"
+          autocomplete="email"
           required
         >
-      </div>
 
 
-      <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">
+          Password
+        </label>
 
         <input
           type="password"
           id="password"
+          name="password"
           placeholder="Password"
+          autocomplete="current-password"
           required
         >
+
+
+        <button
+          type="submit"
+          class="button button-primary login-button"
+          id="loginButton"
+        >
+          Sign In
+        </button>
+
+      </form>
+
+
+      <!-- ERROR / STATUS MESSAGE -->
+      <div
+        id="loginMessage"
+        class="login-message">
       </div>
 
 
-      <button type="submit" class="gold-button" id="loginButton">
-        Sign In
-      </button>
+      <!-- ACCOUNT HELP -->
+      <div class="login-help">
 
-      <p id="loginMessage" class="login-message"></p>
+        <strong>Don't have an account?</strong>
 
-    </form>
+        <br>
 
-    <div class="login-help">
-      <strong>Having trouble?</strong><br>
-      Contact the NHS advisor if you need help accessing your account.
+        <a href="signup.html">
+          Create an NHS Member Account
+        </a>
+
+        <br><br>
+
+        <strong>Having trouble?</strong>
+
+        <br>
+
+        Contact the NHS advisor if you need help accessing your account.
+
+      </div>
+
+
+      <p class="login-note">
+        NHS member accounts must use an
+        <strong>@alamogordoschools.org</strong>
+        school email address.
+      </p>
+
     </div>
 
-  </div>
-
-</section>
+  </main>
 
 
-<footer class="site-footer">
-  <div class="footer-container">
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <div>
-      <strong>Alamogordo High School</strong>
-      <p>National Honor Society</p>
-    </div>
+  <script>
 
-    <p>
-      © 2026 Alamogordo High School NHS
-    </p>
+    const SUPABASE_URL =
+      "https://biysmsrusfnjjadtvhxj.supabase.co";
 
-  </div>
-</footer>
+    const SUPABASE_KEY =
+      "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
 
-
-<script>
-
-const SUPABASE_URL =
-  "https://biysmsrusfnjjadtvhxj.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
-
-const supabaseClient =
-  supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
 
-const loginForm = document.getElementById("loginForm");
-const loginMessage = document.getElementById("loginMessage");
-const loginButton = document.getElementById("loginButton");
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const loginMessage =
+      document.getElementById("loginMessage");
+
+    const loginButton =
+      document.getElementById("loginButton");
 
 
-loginForm.addEventListener("submit", async function(event) {
+    function showMessage(message) {
 
-  event.preventDefault();
+      loginMessage.textContent = message;
+      loginMessage.style.display = "block";
 
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value;
+    }
 
 
-  loginButton.disabled = true;
-  loginButton.textContent = "Signing in...";
-  loginMessage.textContent = "";
+    loginForm.addEventListener(
+      "submit",
+      async function (event) {
+
+        event.preventDefault();
+
+        loginMessage.style.display = "none";
+
+        const email =
+          document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
+
+        const password =
+          document
+            .getElementById("password")
+            .value;
 
 
-  const { data, error } =
-    await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
+        /*
+          Make sure the user is using an
+          Alamogordo Schools email address.
+        */
+
+        if (
+          !email.endsWith(
+            "@alamogordoschools.org"
+          )
+        ) {
+
+          showMessage(
+            "Please use your Alamogordo Schools email address ending in @alamogordoschools.org."
+          );
+
+          return;
+
+        }
 
 
-  if (error) {
-
-    loginMessage.textContent =
-      "Login failed: " + error.message;
-
-    loginButton.disabled = false;
-    loginButton.textContent = "Sign In";
-
-    return;
-  }
+        loginButton.disabled = true;
+        loginButton.textContent = "Signing In...";
 
 
-  window.location.href = "member.html";
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.signInWithPassword({
 
-});
+            email: email,
 
+            password: password
 
-async function checkExistingSession() {
-
-  const { data } =
-    await supabaseClient.auth.getSession();
-
-  if (data.session) {
-    window.location.href = "member.html";
-  }
-
-}
+          });
 
 
-checkExistingSession();
+        if (error) {
+
+          console.error(error);
+
+          showMessage(
+            "Unable to sign in. Please check your school email and password."
+          );
+
+          loginButton.disabled = false;
+          loginButton.textContent = "Sign In";
+
+          return;
+
+        }
 
 
-function toggleMenu() {
+        /*
+          Successful login.
+          Send the member to the dashboard.
+        */
 
-  document
-    .getElementById("mainNav")
-    .classList.toggle("open");
+        window.location.href =
+          "member.html";
 
-}
+      }
+    );
 
-</script>
+
+  </script>
 
 </body>
-</html>
-
-</body>
 
 </html>
+```
+
