@@ -368,6 +368,17 @@ signupForm.addEventListener(
         .toLowerCase();
 
 
+        if (!email.endsWith("@alamogordoschools.org")) {
+        
+          signupMessage.textContent =
+            "You must use your Alamogordo Schools email address.";
+        
+          return;
+        
+        }
+
+    
+
     const password =
       document
         .getElementById("password")
