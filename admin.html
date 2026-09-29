@@ -1,8 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Admin Dashboard | AHS NHS</title>
@@ -10,44 +13,79 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
+
 
 <body>
 
+
 <header class="site-header">
+
   <div class="nav-container">
 
     <a href="index.html" class="brand">
-      <div class="brand-shield">NHS</div>
+
+      <div class="brand-shield">
+        NHS
+      </div>
 
       <div class="brand-text">
-        <strong>ALAMOGORDO HIGH SCHOOL</strong>
-        <span>National Honor Society</span>
+
+        <strong>
+          ALAMOGORDO HIGH SCHOOL
+        </strong>
+
+        <span>
+          National Honor Society
+        </span>
+
       </div>
+
     </a>
+
 
     <button
       class="menu-toggle"
-      onclick="toggleMenu()"
-      aria-label="Open navigation">
+      onclick="toggleMenu()">
+
       ☰
+
     </button>
 
+
     <nav id="mainNav">
-        <nav id="mainNav">
-          <a href="index.html">Home</a>
-          <a href="events.html">Events</a>
-          <a href="service.html">Service</a>
-          <a href="login.html">Member Login</a>
-        </nav>
-      <a href="#" onclick="logout(); return false;">Log Out</a>
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="service.html">
+        Service
+      </a>
+
+      <a href="member.html">
+        Dashboard
+      </a>
+
+      <a href="#"
+         onclick="logout(); return false;">
+
+        Log Out
+
+      </a>
+
     </nav>
 
   </div>
+
 </header>
 
 
-<!-- PAGE HERO -->
 
 <section class="page-hero">
 
@@ -62,7 +100,7 @@
     </h1>
 
     <p>
-      Review service hours and manage NHS events.
+      Review and manage NHS member service-hour submissions.
     </p>
 
   </div>
@@ -70,9 +108,13 @@
 </section>
 
 
+
 <section class="content-section">
 
-  <!-- ACCESS DENIED -->
+
+  <!-- =========================================
+       ACCESS DENIED
+       ========================================= -->
 
   <div
     id="accessDenied"
@@ -84,7 +126,7 @@
     </h2>
 
     <p>
-      You must be an NHS administrator or advisor
+      You must be an NHS administrator
       to access this page.
     </p>
 
@@ -101,41 +143,82 @@
   </div>
 
 
-  <!-- ADMIN CONTENT -->
+
+  <!-- =========================================
+       ADMIN CONTENT
+       ========================================= -->
 
   <div
     id="adminContent"
     style="display:none;">
 
 
-    <!-- SERVICE HOUR STATS -->
+    <!-- =========================================
+         SUMMARY
+         ========================================= -->
 
     <div class="admin-stats">
 
-      <div class="admin-stat">
-        <span>Pending</span>
-        <strong id="pendingCount">0</strong>
-      </div>
 
       <div class="admin-stat">
-        <span>Approved</span>
-        <strong id="approvedCount">0</strong>
+
+        <span>
+          Pending
+        </span>
+
+        <strong id="pendingCount">
+          0
+        </strong>
+
       </div>
 
-      <div class="admin-stat">
-        <span>Rejected</span>
-        <strong id="rejectedCount">0</strong>
-      </div>
 
       <div class="admin-stat">
-        <span>Total Hours</span>
-        <strong id="totalHours">0</strong>
+
+        <span>
+          Approved
+        </span>
+
+        <strong id="approvedCount">
+          0
+        </strong>
+
       </div>
+
+
+      <div class="admin-stat">
+
+        <span>
+          Rejected
+        </span>
+
+        <strong id="rejectedCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="admin-stat">
+
+        <span>
+          Total Hours
+        </span>
+
+        <strong id="totalHours">
+          0
+        </strong>
+
+      </div>
+
 
     </div>
 
 
-    <!-- SERVICE HOURS -->
+
+    <!-- =========================================
+         SERVICE-HOUR FILTER
+         ========================================= -->
 
     <div class="admin-toolbar">
 
@@ -177,11 +260,17 @@
     </div>
 
 
+
     <div
       id="adminMessage"
       class="admin-message">
     </div>
 
+
+
+    <!-- =========================================
+         SUBMISSIONS
+         ========================================= -->
 
     <div id="submissions">
 
@@ -192,9 +281,10 @@
     </div>
 
 
-    <!-- ===================================
+
+    <!-- =========================================
          EVENT MANAGEMENT
-         =================================== -->
+         ========================================= -->
 
     <section class="admin-events-section">
 
@@ -220,6 +310,7 @@
       </div>
 
 
+
       <!-- CREATE EVENT -->
 
       <div class="event-admin-form">
@@ -230,6 +321,7 @@
 
 
         <form id="eventForm">
+
 
           <div class="admin-form-grid">
 
@@ -247,6 +339,7 @@
                 required>
 
             </div>
+
 
 
             <div class="form-group">
@@ -282,6 +375,7 @@
             </div>
 
 
+
             <div class="form-group">
 
               <label for="eventDate">
@@ -294,6 +388,7 @@
                 required>
 
             </div>
+
 
 
             <div class="form-group">
@@ -310,6 +405,7 @@
             </div>
 
 
+
             <div class="form-group">
 
               <label for="eventLocation">
@@ -323,7 +419,9 @@
 
             </div>
 
+
           </div>
+
 
 
           <div class="form-group">
@@ -337,6 +435,7 @@
               placeholder="Describe the event..."></textarea>
 
           </div>
+
 
 
           <button
@@ -354,14 +453,17 @@
             class="admin-message">
           </p>
 
+
         </form>
 
       </div>
 
 
+
       <!-- EXISTING EVENTS -->
 
       <div class="admin-events-list">
+
 
         <div class="section-heading">
 
@@ -388,16 +490,18 @@
 
         </div>
 
+
       </div>
 
+
     </section>
+
 
   </div>
 
 </section>
 
 
-<!-- FOOTER -->
 
 <footer class="site-footer">
 
@@ -415,6 +519,7 @@
 
     </div>
 
+
     <p>
       © 2026 Alamogordo High School NHS
     </p>
@@ -424,7 +529,9 @@
 </footer>
 
 
+
 <script>
+
 
 /* =========================================
    SUPABASE
@@ -433,8 +540,10 @@
 const SUPABASE_URL =
   "https://biysmsrusfnjjadtvhxj.supabase.co";
 
+
 const SUPABASE_KEY =
   "sb_publishable_bNU8NyeC-i8nGBuCeZdpMw_Ot8kiws1";
+
 
 const supabaseClient =
   supabase.createClient(
@@ -446,30 +555,22 @@ const supabaseClient =
 let currentUser = null;
 
 
+
 /* =========================================
-   CHECK ADMIN
+   CHECK ADMIN ACCESS
    ========================================= */
 
 async function checkAdmin() {
 
   const {
-    data,
-    error
+    data
   } =
     await supabaseClient.auth.getSession();
 
 
-  if (error) {
-
-    console.error(error);
-
-    window.location.href =
-      "login.html";
-
-    return;
-
-  }
-
+  /*
+     NOT LOGGED IN
+  */
 
   if (!data.session) {
 
@@ -485,15 +586,17 @@ async function checkAdmin() {
     data.session.user;
 
 
+  /*
+     GET USER PROFILE
+  */
+
   const {
     data: profile,
-    error: profileError
+    error
   } =
     await supabaseClient
       .from("profiles")
-      .select(
-        "role, full_name, school_email"
-      )
+      .select("role")
       .eq(
         "id",
         currentUser.id
@@ -501,13 +604,16 @@ async function checkAdmin() {
       .single();
 
 
+  /*
+     ADMIN ONLY
+
+     Advisors and members are denied.
+  */
+
   if (
-    profileError ||
+    error ||
     !profile ||
-    (
-      profile.role !== "admin" &&
-      profile.role !== "advisor"
-    )
+    profile.role !== "admin"
   ) {
 
     document
@@ -518,6 +624,10 @@ async function checkAdmin() {
 
   }
 
+
+  /*
+     SHOW ADMIN CONTENT
+  */
 
   document
     .getElementById("adminContent")
@@ -531,8 +641,9 @@ async function checkAdmin() {
 }
 
 
+
 /* =========================================
-   LOAD SERVICE HOURS
+   LOAD SERVICE-HOUR SUBMISSIONS
    ========================================= */
 
 async function loadSubmissions() {
@@ -544,9 +655,11 @@ async function loadSubmissions() {
 
 
   container.innerHTML = `
+
     <p class="loading-text">
       Loading submissions...
     </p>
+
   `;
 
 
@@ -568,7 +681,13 @@ async function loadSubmissions() {
       );
 
 
-  if (filter !== "all") {
+  /*
+     APPLY FILTER
+  */
+
+  if (
+    filter !== "all"
+  ) {
 
     query =
       query.eq(
@@ -586,11 +705,17 @@ async function loadSubmissions() {
     await query;
 
 
+  /*
+     ERROR
+  */
+
   if (error) {
 
     console.error(error);
 
+
     container.innerHTML = `
+
       <div class="empty-hours">
 
         <h3>
@@ -604,6 +729,7 @@ async function loadSubmissions() {
         </p>
 
       </div>
+
     `;
 
     return;
@@ -612,89 +738,15 @@ async function loadSubmissions() {
 
 
   /*
-   * ==========================================
-   * GET MEMBER IDs
-   * ==========================================
-   *
-   * We collect the member IDs from the
-   * service_hours table.
-   */
+     UPDATE SUMMARY
+  */
 
-  const memberIds =
-    [
-      ...new Set(
-        (data || [])
-          .map(
-            item =>
-              item.member_id
-          )
-          .filter(Boolean)
-      )
-    ];
+  updateStats(data || []);
 
 
   /*
-   * ==========================================
-   * GET MEMBER NAMES
-   * ==========================================
-   *
-   * This is intentionally done as a separate
-   * query.
-   *
-   * It does NOT require a foreign-key
-   * relationship between service_hours
-   * and profiles.
-   */
-
-  let profileMap = {};
-
-
-  if (memberIds.length > 0) {
-
-    const {
-      data: profiles,
-      error: profilesError
-    } =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "id, full_name, school_email"
-        )
-        .in(
-          "id",
-          memberIds
-        );
-
-
-    if (profilesError) {
-
-      console.error(
-        "Error loading member profiles:",
-        profilesError
-      );
-
-    }
-    else {
-
-      (profiles || []).forEach(
-        function(profile) {
-
-          profileMap[
-            profile.id
-          ] = profile;
-
-        }
-      );
-
-    }
-
-  }
-
-
-  updateStats(
-    data || []
-  );
-
+     NO SUBMISSIONS
+  */
 
   if (
     !data ||
@@ -702,6 +754,7 @@ async function loadSubmissions() {
   ) {
 
     container.innerHTML = `
+
       <div class="empty-hours">
 
         <h3>
@@ -714,6 +767,7 @@ async function loadSubmissions() {
         </p>
 
       </div>
+
     `;
 
     return;
@@ -723,6 +777,10 @@ async function loadSubmissions() {
 
   container.innerHTML = "";
 
+
+  /*
+     CREATE SUBMISSION CARDS
+  */
 
   data.forEach(
     function(item) {
@@ -737,68 +795,45 @@ async function loadSubmissions() {
         "admin-submission";
 
 
-      /*
-       * Find the profile using
-       * service_hours.member_id
-       */
-
-      const member =
-        profileMap[
-          item.member_id
-        ];
-
-
-      /*
-       * Show the person's name.
-       *
-       * If no matching profile exists,
-       * show "NHS Member".
-       */
-
-      const memberName =
-        member?.full_name ||
-        "NHS Member";
-
-
-      const memberEmail =
-        member?.school_email ||
-        "";
-
-
       card.innerHTML = `
 
         <div class="admin-submission-top">
 
+
           <div>
 
-            <span class="admin-status status-${escapeHtml(
-              item.status || "pending"
-            )}">
+            <span
+              class="admin-status status-${escapeHtml(
+                item.status
+              )}">
 
               ${escapeHtml(
-                item.status ||
-                "pending"
+                item.status
               )}
 
             </span>
 
 
             <h3>
+
               ${escapeHtml(
-                item.event_name ||
-                "Service Activity"
+                item.event_name
               )}
+
             </h3>
 
           </div>
 
 
+
           <div class="admin-hours">
 
             <strong>
+
               ${escapeHtml(
-                item.hours || "0"
+                item.hours
               )}
+
             </strong>
 
             <span>
@@ -807,41 +842,12 @@ async function loadSubmissions() {
 
           </div>
 
+
         </div>
 
 
+
         <div class="admin-details">
-
-          <p>
-
-            <strong>
-              Member:
-            </strong>
-
-            ${escapeHtml(
-              memberName
-            )}
-
-          </p>
-
-
-          ${
-            memberEmail
-              ? `
-                <p>
-
-                  <strong>
-                    Email:
-                  </strong>
-
-                  ${escapeHtml(
-                    memberEmail
-                  )}
-
-                </p>
-              `
-              : ""
-          }
 
 
           <p>
@@ -851,8 +857,20 @@ async function loadSubmissions() {
             </strong>
 
             ${escapeHtml(
-              item.service_date ||
-              ""
+              item.service_date
+            )}
+
+          </p>
+
+
+          <p>
+
+            <strong>
+              Member ID:
+            </strong>
+
+            ${escapeHtml(
+              item.member_id
             )}
 
           </p>
@@ -871,18 +889,16 @@ async function loadSubmissions() {
 
           </p>
 
+
         </div>
+
 
 
         <div class="admin-review">
 
-          <label
-            for="note-${escapeHtml(
-              item.id
-            )}">
 
+          <label>
             Review Note
-
           </label>
 
 
@@ -891,16 +907,17 @@ async function loadSubmissions() {
               item.id
             )}"
             placeholder="Optional note for the member...">${escapeHtml(
-              item.review_note ||
-              ""
+              item.review_note || ""
             )}</textarea>
+
 
 
           <div class="admin-actions">
 
 
+            <!-- APPROVE -->
+
             <button
-              type="button"
               class="approve-button"
               onclick="reviewSubmission(
                 '${escapeJs(item.id)}',
@@ -912,8 +929,10 @@ async function loadSubmissions() {
             </button>
 
 
+
+            <!-- REJECT -->
+
             <button
-              type="button"
               class="reject-button"
               onclick="reviewSubmission(
                 '${escapeJs(item.id)}',
@@ -925,8 +944,10 @@ async function loadSubmissions() {
             </button>
 
 
+
+            <!-- SAVE NOTE -->
+
             <button
-              type="button"
               class="save-button"
               onclick="saveNote(
                 '${escapeJs(item.id)}'
@@ -937,7 +958,22 @@ async function loadSubmissions() {
             </button>
 
 
+
+            <!-- DELETE -->
+
+            <button
+              class="delete-hour-button"
+              onclick="deleteSubmission(
+                '${escapeJs(item.id)}'
+              )">
+
+              🗑 Delete
+
+            </button>
+
+
           </div>
+
 
         </div>
 
@@ -954,8 +990,9 @@ async function loadSubmissions() {
 }
 
 
+
 /* =========================================
-   UPDATE STATS
+   UPDATE SUMMARY
    ========================================= */
 
 function updateStats(data) {
@@ -1045,8 +1082,9 @@ function updateStats(data) {
 }
 
 
+
 /* =========================================
-   APPROVE / REJECT
+   APPROVE / REJECT SUBMISSION
    ========================================= */
 
 async function reviewSubmission(
@@ -1073,9 +1111,11 @@ async function reviewSubmission(
       .from("service_hours")
       .update({
 
-        status: status,
+        status:
+          status,
 
-        review_note: note,
+        review_note:
+          note,
 
         reviewed_at:
           new Date().toISOString()
@@ -1089,10 +1129,14 @@ async function reviewSubmission(
 
   if (error) {
 
+    console.error(error);
+
+
     showMessage(
       "Error: " +
       error.message
     );
+
 
     return;
 
@@ -1100,9 +1144,14 @@ async function reviewSubmission(
 
 
   showMessage(
-    status === "approved"
+
+    status ===
+      "approved"
+
       ? "Service hours approved."
+
       : "Service hours rejected."
+
   );
 
 
@@ -1111,11 +1160,14 @@ async function reviewSubmission(
 }
 
 
+
 /* =========================================
-   SAVE NOTE
+   SAVE REVIEW NOTE
    ========================================= */
 
-async function saveNote(id) {
+async function saveNote(
+  id
+) {
 
   const noteElement =
     document.getElementById(
@@ -1136,7 +1188,8 @@ async function saveNote(id) {
       .from("service_hours")
       .update({
 
-        review_note: note,
+        review_note:
+          note,
 
         reviewed_at:
           new Date().toISOString()
@@ -1150,10 +1203,14 @@ async function saveNote(id) {
 
   if (error) {
 
+    console.error(error);
+
+
     showMessage(
       "Error: " +
       error.message
     );
+
 
     return;
 
@@ -1167,8 +1224,73 @@ async function saveNote(id) {
 }
 
 
+
 /* =========================================
-   LOAD ADMIN EVENTS
+   DELETE SERVICE-HOUR SUBMISSION
+   ========================================= */
+
+async function deleteSubmission(
+  id
+) {
+
+  /*
+     CONFIRM BEFORE PERMANENT DELETE
+  */
+
+  const confirmed =
+    window.confirm(
+      "Are you sure you want to permanently delete this service-hour submission?"
+    );
+
+
+  if (!confirmed) {
+
+    return;
+
+  }
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("service_hours")
+      .delete()
+      .eq(
+        "id",
+        id
+      );
+
+
+  if (error) {
+
+    console.error(error);
+
+
+    showMessage(
+      "Unable to delete submission: " +
+      error.message
+    );
+
+
+    return;
+
+  }
+
+
+  showMessage(
+    "Service-hour submission deleted."
+  );
+
+
+  await loadSubmissions();
+
+}
+
+
+
+/* =========================================
+   EVENT MANAGEMENT
    ========================================= */
 
 async function loadAdminEvents() {
@@ -1180,14 +1302,18 @@ async function loadAdminEvents() {
 
 
   if (!container) {
+
     return;
+
   }
 
 
   container.innerHTML = `
+
     <p class="loading-text">
       Loading events...
     </p>
+
   `;
 
 
@@ -1210,7 +1336,9 @@ async function loadAdminEvents() {
 
     console.error(error);
 
+
     container.innerHTML = `
+
       <div class="empty-hours">
 
         <h3>
@@ -1224,7 +1352,9 @@ async function loadAdminEvents() {
         </p>
 
       </div>
+
     `;
+
 
     return;
 
@@ -1237,6 +1367,7 @@ async function loadAdminEvents() {
   ) {
 
     container.innerHTML = `
+
       <div class="empty-hours">
 
         <h3>
@@ -1248,7 +1379,9 @@ async function loadAdminEvents() {
         </p>
 
       </div>
+
     `;
+
 
     return;
 
@@ -1256,106 +1389,114 @@ async function loadAdminEvents() {
 
 
   container.innerHTML =
-    events
-      .map(
-        function(event) {
+    events.map(
+      function(event) {
 
-          return `
+        return `
 
-            <div class="admin-event-card">
+          <div
+            class="admin-event-card">
 
-              <div class="admin-event-card-content">
 
-                <span class="admin-event-type">
+            <div
+              class="admin-event-card-content">
 
-                  ${escapeHtml(
-                    event.event_type ||
-                    "NHS"
+
+              <span
+                class="admin-event-type">
+
+                ${escapeHtml(
+                  event.event_type ||
+                  "NHS"
+                )}
+
+              </span>
+
+
+              <h3>
+
+                ${escapeHtml(
+                  event.title
+                )}
+
+              </h3>
+
+
+              <p>
+
+                ${escapeHtml(
+                  event.description ||
+                  "No description provided."
+                )}
+
+              </p>
+
+
+              <div
+                class="admin-event-details">
+
+
+                <span>
+
+                  📅
+                  ${formatEventDate(
+                    event.event_date
                   )}
 
                 </span>
 
 
-                <h3>
+                <span>
 
+                  🕐
                   ${escapeHtml(
-                    event.title
+                    event.event_time ||
+                    "Time TBD"
                   )}
 
-                </h3>
+                </span>
 
 
-                <p>
+                <span>
 
+                  📍
                   ${escapeHtml(
-                    event.description ||
-                    "No description provided."
+                    event.location ||
+                    "Location TBD"
                   )}
 
-                </p>
+                </span>
 
-
-                <div class="admin-event-details">
-
-                  <span>
-
-                    📅
-
-                    ${formatEventDate(
-                      event.event_date
-                    )}
-
-                  </span>
-
-
-                  <span>
-
-                    🕐
-
-                    ${escapeHtml(
-                      event.event_time ||
-                      "Time TBD"
-                    )}
-
-                  </span>
-
-
-                  <span>
-
-                    📍
-
-                    ${escapeHtml(
-                      event.location ||
-                      "Location TBD"
-                    )}
-
-                  </span>
-
-                </div>
 
               </div>
 
 
-              <button
-                type="button"
-                class="delete-event-button"
-                onclick="deleteEvent(
-                  '${escapeJs(event.id)}'
-                )">
-
-                Delete
-
-              </button>
-
             </div>
 
-          `;
 
-        }
-      )
-      .join("");
+
+            <button
+              type="button"
+              class="delete-event-button"
+              onclick="deleteEvent(
+                '${escapeJs(event.id)}'
+              )">
+
+              Delete
+
+            </button>
+
+
+          </div>
+
+        `;
+
+      }
+    )
+    .join("");
 
 }
+
 
 
 /* =========================================
@@ -1385,10 +1526,13 @@ document
         );
 
 
-      button.disabled = true;
+      button.disabled =
+        true;
+
 
       button.textContent =
         "Creating...";
+
 
       message.textContent =
         "";
@@ -1410,7 +1554,9 @@ document
           "You must be logged in.";
 
 
-        button.disabled = false;
+        button.disabled =
+          false;
+
 
         button.textContent =
           "+ Create Event";
@@ -1480,7 +1626,8 @@ document
           .from("events")
           .insert({
 
-            title: title,
+            title:
+              title,
 
             event_type:
               eventType,
@@ -1507,12 +1654,15 @@ document
 
         console.error(error);
 
+
         message.textContent =
           "Error creating event: " +
           error.message;
 
 
-        button.disabled = false;
+        button.disabled =
+          false;
+
 
         button.textContent =
           "+ Create Event";
@@ -1534,7 +1684,9 @@ document
         .reset();
 
 
-      button.disabled = false;
+      button.disabled =
+        false;
+
 
       button.textContent =
         "+ Create Event";
@@ -1546,11 +1698,14 @@ document
   );
 
 
+
 /* =========================================
    DELETE EVENT
    ========================================= */
 
-async function deleteEvent(id) {
+async function deleteEvent(
+  id
+) {
 
   const confirmed =
     window.confirm(
@@ -1559,7 +1714,9 @@ async function deleteEvent(id) {
 
 
   if (!confirmed) {
+
     return;
+
   }
 
 
@@ -1579,10 +1736,12 @@ async function deleteEvent(id) {
 
     console.error(error);
 
+
     showEventMessage(
       "Unable to delete event: " +
       error.message
     );
+
 
     return;
 
@@ -1599,21 +1758,25 @@ async function deleteEvent(id) {
 }
 
 
+
 /* =========================================
    FORMAT EVENT DATE
    ========================================= */
 
-function formatEventDate(date) {
+function formatEventDate(
+  date
+) {
 
   if (!date) {
+
     return "Date TBD";
+
   }
 
 
   const d =
     new Date(
-      date +
-      "T00:00:00"
+      date + "T00:00:00"
     );
 
 
@@ -1631,20 +1794,30 @@ function formatEventDate(date) {
   return d.toLocaleDateString(
     "en-US",
     {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
+
+      month:
+        "long",
+
+      day:
+        "numeric",
+
+      year:
+        "numeric"
+
     }
   );
 
 }
 
 
+
 /* =========================================
    EVENT MESSAGE
    ========================================= */
 
-function showEventMessage(message) {
+function showEventMessage(
+  message
+) {
 
   const box =
     document.getElementById(
@@ -1653,7 +1826,9 @@ function showEventMessage(message) {
 
 
   if (!box) {
+
     return;
+
   }
 
 
@@ -1664,7 +1839,8 @@ function showEventMessage(message) {
   setTimeout(
     function() {
 
-      box.textContent = "";
+      box.textContent =
+        "";
 
     },
     4000
@@ -1673,68 +1849,14 @@ function showEventMessage(message) {
 }
 
 
-/* =========================================
-   ADMIN MESSAGE
-   ========================================= */
-
-function showMessage(message) {
-
-  const box =
-    document.getElementById(
-      "adminMessage"
-    );
-
-
-  if (!box) {
-    return;
-  }
-
-
-  box.textContent =
-    message;
-
-
-  setTimeout(
-    function() {
-
-      box.textContent = "";
-
-    },
-    4000
-  );
-
-}
-
 
 /* =========================================
-   ESCAPE HTML
+   JAVASCRIPT ESCAPING
    ========================================= */
 
-function escapeHtml(text) {
-
-  const div =
-    document.createElement(
-      "div"
-    );
-
-
-  div.textContent =
-    text === null ||
-    text === undefined
-      ? ""
-      : String(text);
-
-
-  return div.innerHTML;
-
-}
-
-
-/* =========================================
-   ESCAPE JAVASCRIPT STRINGS
-   ========================================= */
-
-function escapeJs(text) {
+function escapeJs(
+  text
+) {
 
   if (
     text === null ||
@@ -1771,6 +1893,73 @@ function escapeJs(text) {
 }
 
 
+
+/* =========================================
+   MESSAGE
+   ========================================= */
+
+function showMessage(
+  message
+) {
+
+  const box =
+    document.getElementById(
+      "adminMessage"
+    );
+
+
+  if (!box) {
+
+    return;
+
+  }
+
+
+  box.textContent =
+    message;
+
+
+  setTimeout(
+    function() {
+
+      box.textContent =
+        "";
+
+    },
+    4000
+  );
+
+}
+
+
+
+/* =========================================
+   HTML ESCAPING
+   ========================================= */
+
+function escapeHtml(
+  text
+) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.textContent =
+    text === null ||
+    text === undefined
+      ? ""
+      : String(text);
+
+
+  return div.innerHTML;
+
+}
+
+
+
 /* =========================================
    LOGOUT
    ========================================= */
@@ -1786,6 +1975,7 @@ async function logout() {
     "login.html";
 
 }
+
 
 
 /* =========================================
@@ -1805,13 +1995,18 @@ function toggleMenu() {
 }
 
 
+
 /* =========================================
    START
    ========================================= */
 
 checkAdmin();
 
+
 </script>
 
+
 </body>
+
 </html>
+```
