@@ -1,43 +1,621 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Service Opportunities | AHS NHS</title>
+
   <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+
+    /* =========================================
+       SERVICE PAGE
+    ========================================= */
+
+    .service-page {
+      padding: 70px 20px 100px;
+    }
+
+    .service-container {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       INTRO
+    ========================================= */
+
+    .service-intro {
+      max-width: 780px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .service-intro h2 {
+      margin: 0 0 15px;
+      font-size: 2rem;
+      color: var(--white);
+    }
+
+    .service-intro h2 span {
+      color: var(--gold);
+    }
+
+    .service-intro p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+
+    /* =========================================
+       SERVICE GRID
+    ========================================= */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+
+    /* =========================================
+       SERVICE CARD
+    ========================================= */
+
+    .service-card {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(245, 197, 66, .09),
+          rgba(255, 255, 255, .025) 50%,
+          rgba(0, 0, 0, .1)
+        );
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, .25);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+
+      border-color: var(--gold-border);
+
+      box-shadow:
+        0 25px 55px rgba(0, 0, 0, .35);
+    }
+
+
+    .service-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 4px;
+
+      background: var(--gold);
+    }
+
+
+    /* =========================================
+       CARD HEADER
+    ========================================= */
+
+    .service-card-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 15px;
+
+      padding: 25px 28px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+
+    .service-date {
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 62px;
+      height: 62px;
+
+      border-radius: 14px;
+
+      background: rgba(245, 197, 66, .12);
+
+      border: 1px solid var(--gold-border);
+
+      color: var(--gold);
+    }
+
+
+    .service-date strong {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+
+    .service-date small {
+      margin-top: 5px;
+
+      font-size: .65rem;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+
+    .service-status {
+      display: inline-flex;
+
+      align-items: center;
+      gap: 7px;
+
+      padding: 8px 12px;
+
+      border-radius: 999px;
+
+      background: rgba(245, 197, 66, .08);
+
+      border: 1px solid var(--gold-border);
+
+      color: var(--gold);
+
+      font-size: .7rem;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+
+    .service-status::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+    }
+
+
+    /* =========================================
+       CARD BODY
+    ========================================= */
+
+    .service-card-body {
+      display: flex;
+      flex-direction: column;
+
+      flex: 1;
+
+      padding: 28px;
+    }
+
+
+    .service-card-body h2 {
+      margin: 0 0 13px;
+
+      color: var(--white);
+
+      font-size: 1.45rem;
+      line-height: 1.3;
+    }
+
+
+    .service-card-body > p {
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================
+       DETAILS
+    ========================================= */
+
+    .service-details {
+      display: grid;
+
+      gap: 10px;
+
+      margin: 25px 0;
+      padding: 18px;
+
+      background: rgba(0, 0, 0, .2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+
+    .service-detail {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: var(--muted);
+
+      font-size: .9rem;
+    }
+
+
+    .service-detail-icon {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 28px;
+      height: 28px;
+
+      border-radius: 7px;
+
+      background: rgba(245, 197, 66, .1);
+
+      color: var(--gold);
+
+      font-size: .8rem;
+    }
+
+
+    /* =========================================
+       BUTTON
+    ========================================= */
+
+    .service-action {
+      margin-top: auto;
+    }
+
+
+    .service-action .button {
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      box-sizing: border-box;
+    }
+
+
+    /* =========================================
+       SERVICE HOURS PANEL
+    ========================================= */
+
+    .service-hours-panel {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns: 1fr auto;
+
+      align-items: center;
+
+      gap: 35px;
+
+      margin-top: 55px;
+
+      padding: 38px;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(245, 197, 66, .14),
+          rgba(255, 255, 255, .035)
+        );
+
+      border: 1px solid var(--gold-border);
+
+      border-radius: var(--radius);
+
+      overflow: hidden;
+    }
+
+
+    .service-hours-panel::after {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      right: -90px;
+      bottom: -110px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(245, 197, 66, .15);
+    }
+
+
+    .service-hours-content {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .service-hours-content h2 {
+      margin: 8px 0 12px;
+
+      color: var(--white);
+
+      font-size: 1.8rem;
+    }
+
+
+    .service-hours-content p:last-child {
+      max-width: 700px;
+
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.7;
+    }
+
+
+    .service-hours-action {
+      position: relative;
+      z-index: 1;
+
+      flex-shrink: 0;
+    }
+
+
+    .service-hours-action .button {
+      white-space: nowrap;
+    }
+
+
+    /* =========================================
+       MEMBER NOTICE
+    ========================================= */
+
+    .member-notice {
+      display: flex;
+
+      align-items: center;
+      gap: 14px;
+
+      margin-top: 22px;
+      padding: 18px 20px;
+
+      background: rgba(255, 255, 255, .025);
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      color: var(--muted);
+
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+
+    .member-notice-icon {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      width: 38px;
+      height: 38px;
+
+      border-radius: 10px;
+
+      background: rgba(245, 197, 66, .1);
+
+      color: var(--gold);
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 800px) {
+
+      .service-page {
+        padding: 55px 16px 75px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-hours-panel {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+      }
+
+      .service-hours-action .button {
+        width: 100%;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      .service-intro {
+        margin-bottom: 35px;
+      }
+
+      .service-intro h2 {
+        font-size: 1.6rem;
+      }
+
+      .service-card-header {
+        padding: 20px;
+      }
+
+      .service-card-body {
+        padding: 24px;
+      }
+
+      .service-status {
+        font-size: .62rem;
+      }
+
+      .service-hours-panel {
+        padding: 25px;
+      }
+
+      .service-hours-content h2 {
+        font-size: 1.5rem;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header class="site-header">
+
   <a class="brand" href="index.html">
-    <span class="brand-shield">✦</span>
-    <span class="brand-text">
-      <strong>AHS <em>NHS</em></strong>
-      <small>NATIONAL HONOR SOCIETY</small>
+
+    <span class="brand-shield">
+      ✦
     </span>
+
+    <span class="brand-text">
+
+      <strong>
+        AHS <em>NHS</em>
+      </strong>
+
+      <small>
+        NATIONAL HONOR SOCIETY
+      </small>
+
+    </span>
+
   </a>
 
-  <button class="menu-toggle" aria-label="Open navigation">☰</button>
+
+  <button
+    class="menu-toggle"
+    aria-label="Open navigation"
+  >
+    ☰
+  </button>
+
 
   <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="events.html">Events</a>
-    <a class="active" href="service.html">Service</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-    <a class="login-button" href="login.html">🔒 Member Login</a>
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+
+    <a href="leadership.html">
+      Leadership
+    </a>
+
+    <a href="events.html">
+      Events
+    </a>
+
+    <a
+      class="active"
+      href="service.html"
+    >
+      Service
+    </a>
+
+    <a href="resources.html">
+      Resources
+    </a>
+
+    <a href="contact.html">
+      Contact
+    </a>
+
+    <a
+      class="login-button"
+      href="login.html"
+    >
+      🔒 Member Login
+    </a>
+
   </nav>
+
 </header>
 
 
-<main>
+
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="page-hero">
+
   <div class="page-hero-inner">
-    <p class="eyebrow">COMMUNITY IMPACT</p>
+
+    <p class="eyebrow">
+      COMMUNITY IMPACT
+    </p>
 
     <h1>
       Service <span>Opportunities</span>
@@ -47,165 +625,362 @@
       National Honor Society members make a difference through
       meaningful service to our school and community.
     </p>
+
   </div>
+
 </section>
 
 
-<section class="content-section">
 
-  <div class="section-heading">
-    <p class="eyebrow">GET INVOLVED</p>
-    <h2>Current Opportunities</h2>
-    <p>
-      Approved NHS service opportunities will appear here.
-    </p>
-  </div>
+<!-- =========================================
+     SERVICE CONTENT
+========================================= -->
 
+<main class="service-page">
 
-  <div class="service-grid">
-
-    <!-- SERVICE EVENT 1 -->
-    <article class="service-card">
-
-      <div class="service-card-header">
-        <span class="service-date">
-          <strong>--</strong>
-          <small>DATE</small>
-        </span>
-
-        <span class="service-status">
-          COMING SOON
-        </span>
-      </div>
-
-      <div class="service-card-body">
-
-        <h2>Community Service Event</h2>
-
-        <p>
-          Details about an approved NHS community service
-          opportunity will be posted here.
-        </p>
-
-        <div class="service-details">
-          <span>📍 Location TBD</span>
-          <span>🕒 Time TBD</span>
-        </div>
-
-        <a href="login.html" class="button button-gold">
-          Member Sign-Up →
-        </a>
-
-      </div>
-
-    </article>
+  <div class="service-container">
 
 
-    <!-- SERVICE EVENT 2 -->
-    <article class="service-card">
+    <!-- INTRO -->
 
-      <div class="service-card-header">
-        <span class="service-date">
-          <strong>--</strong>
-          <small>DATE</small>
-        </span>
+    <div class="service-intro">
 
-        <span class="service-status">
-          COMING SOON
-        </span>
-      </div>
+      <p class="eyebrow">
+        GET INVOLVED
+      </p>
 
-      <div class="service-card-body">
-
-        <h2>School Service Project</h2>
-
-        <p>
-          School-based service opportunities will be listed
-          here when they are approved.
-        </p>
-
-        <div class="service-details">
-          <span>📍 Alamogordo High School</span>
-          <span>🕒 Time TBD</span>
-        </div>
-
-        <a href="login.html" class="button button-gold">
-          Member Sign-Up →
-        </a>
-
-      </div>
-
-    </article>
-
-  </div>
-
-
-  <!-- SERVICE HOURS -->
-
-  <div class="service-hours">
-
-    <div>
-      <p class="eyebrow">NHS MEMBERS</p>
-
-      <h2>Track Your Service Hours</h2>
+      <h2>
+        Make an <span>Impact</span>
+      </h2>
 
       <p>
-        Members will be able to submit service hours,
-        view their approved hours, and track their progress
-        from the private member dashboard.
+        Approved NHS service opportunities will appear here.
+        Check back regularly for new ways to serve
+        Alamogordo High School and the surrounding community.
       </p>
+
     </div>
 
-    <a href="login.html" class="button button-outline">
-      Submit Service Hours →
-    </a>
+
+
+    <!-- OPPORTUNITIES -->
+
+    <section class="service-grid">
+
+
+      <!-- SERVICE EVENT 1 -->
+
+      <article class="service-card">
+
+        <div class="service-card-header">
+
+          <span class="service-date">
+
+            <strong>--</strong>
+
+            <small>DATE</small>
+
+          </span>
+
+
+          <span class="service-status">
+            COMING SOON
+          </span>
+
+        </div>
+
+
+        <div class="service-card-body">
+
+          <h2>
+            Community Service Event
+          </h2>
+
+          <p>
+            Details about an approved NHS community
+            service opportunity will be posted here.
+          </p>
+
+
+          <div class="service-details">
+
+            <div class="service-detail">
+
+              <span class="service-detail-icon">
+                📍
+              </span>
+
+              <span>
+                Location TBD
+              </span>
+
+            </div>
+
+
+            <div class="service-detail">
+
+              <span class="service-detail-icon">
+                🕒
+              </span>
+
+              <span>
+                Time TBD
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="service-action">
+
+            <a
+              href="login.html"
+              class="button button-gold"
+            >
+              Member Sign-Up →
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- SERVICE EVENT 2 -->
+
+      <article class="service-card">
+
+        <div class="service-card-header">
+
+          <span class="service-date">
+
+            <strong>--</strong>
+
+            <small>DATE</small>
+
+          </span>
+
+
+          <span class="service-status">
+            COMING SOON
+          </span>
+
+        </div>
+
+
+        <div class="service-card-body">
+
+          <h2>
+            School Service Project
+          </h2>
+
+          <p>
+            School-based service opportunities will
+            be listed here when they are approved.
+          </p>
+
+
+          <div class="service-details">
+
+            <div class="service-detail">
+
+              <span class="service-detail-icon">
+                📍
+              </span>
+
+              <span>
+                Alamogordo High School
+              </span>
+
+            </div>
+
+
+            <div class="service-detail">
+
+              <span class="service-detail-icon">
+                🕒
+              </span>
+
+              <span>
+                Time TBD
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="service-action">
+
+            <a
+              href="login.html"
+              class="button button-gold"
+            >
+              Member Sign-Up →
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+
+
+    <!-- MEMBER NOTICE -->
+
+    <div class="member-notice">
+
+      <span class="member-notice-icon">
+        🔒
+      </span>
+
+      <span>
+        Member sign-up and service-hour submission
+        require an NHS member account.
+      </span>
+
+    </div>
+
+
+
+    <!-- SERVICE HOURS -->
+
+    <section class="service-hours-panel">
+
+      <div class="service-hours-content">
+
+        <p class="eyebrow">
+          NHS MEMBERS
+        </p>
+
+        <h2>
+          Track Your Service Hours
+        </h2>
+
+        <p>
+          Members can submit service hours, view approved
+          hours, and track their progress from the private
+          member dashboard.
+        </p>
+
+      </div>
+
+
+      <div class="service-hours-action">
+
+        <a
+          href="login.html"
+          class="button button-outline"
+        >
+          Submit Service Hours →
+        </a>
+
+      </div>
+
+    </section>
+
 
   </div>
-
-</section>
 
 </main>
 
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer class="site-footer">
 
   <div class="footer-main">
 
     <div>
-      <strong>Alamogordo High School</strong>
-      <span>National Honor Society</span>
+
+      <strong>
+        Alamogordo High School
+      </strong>
+
+      <span>
+        National Honor Society
+      </span>
+
     </div>
+
 
     <p class="quote">
-      “Service to others is the rent you pay for your room here on earth.”
+      “Service to others is the rent you pay
+      for your room here on earth.”
     </p>
 
+
     <div class="footer-links">
-      <a href="contact.html">✉</a>
-      <a href="events.html">▣</a>
+
+      <a href="contact.html">
+        ✉
+      </a>
+
+      <a href="events.html">
+        ▣
+      </a>
+
     </div>
 
+
     <div class="school-mark">
-      <strong>ALAMOGORDO</strong>
-      <span>HIGH SCHOOL</span>
+
+      <strong>
+        ALAMOGORDO
+      </strong>
+
+      <span>
+        HIGH SCHOOL
+      </span>
+
     </div>
 
   </div>
 
+
   <div class="footer-bottom">
 
     <span>
+
       © <span id="year">2026</span>
-      Alamogordo High School National Honor Society.
+
+      Alamogordo High School
+      National Honor Society.
+
     </span>
 
+
     <span>
-      <a href="contact.html">Contact</a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
     </span>
 
   </div>
 
 </footer>
+
+
+
+<script src="js/script.js"></script>
+
+
+</body>
+
+</html>
+```
 
 <script src="js/script.js"></script>
 
